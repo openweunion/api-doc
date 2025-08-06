@@ -1,0 +1,14 @@
+# Redocly build output
+.redocly/
+docs/
+
+# Redocly lint ignore file
+.redocly.lint-ignore.yaml
+
+# Node.js dependencies
+node_modules/
+
+# Editor and OS specific files
+.DS_Store
+.vscode/
+*.log

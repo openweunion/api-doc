@@ -1,0 +1,53 @@
+get:
+  tags:
+    - VASP
+  operationId: listVASPs
+  summary: List VASPs
+  description: Returns a list of VASPs. The result of VASPs are paginated.
+  parameters:
+    - name: page
+      in: query
+      description: "The page number to retrieve."
+      example: 1
+      required: true
+      schema:
+        type: number
+    - name: pageSize
+      in: query
+      description: "The number of items per page."
+      example: 10
+      required: true
+      schema:
+        type: number
+  responses:
+    "200":
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: "../components/schemas/VASP.yaml"
+          example:
+            [
+              {
+                name: "VASP1",
+                description: "VASP1 description",
+                email: "support@vasp1.com",
+                webhookUrl: "https://vasp1.com/webhook",
+                status: active
+              },
+              {
+                name: "VASP2",
+                description: "VASP2 description",
+                email: "support@vasp2.com",
+                webhookUrl: "https://vasp2.com/webhook",
+                status: inactive
+              }
+            ]
+    "403":
+      description: Forbidden
+      $ref: ../components/responses/Problem.yaml
+    "404":
+      description: VASP not found
+      $ref: ../components/responses/Problem.yaml

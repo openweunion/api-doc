@@ -1,0 +1,31 @@
+type: object
+properties:
+  name:
+    description: "Name of the VASP."
+    type: string
+    example: VASP1
+  description:
+    description: "Description of the VASP."
+    type: string
+    example: VASP1 description
+  email:
+    description: "Contact email for the VASP."
+    type: string
+    example: support@vasp1.com
+  webhookUrl:
+    description: "Webhook URL for the VASP to receive notifications."
+    type: string
+    example: https://vasp1.com/webhook
+  status:
+    description: "Status of the VASP."
+    type: string
+    enum:
+      - active
+      - inactive
+      - pending
+  vaspID:
+    description: "The unique identifier for the VASP."
+    allOf:
+      - $ref: "./VASPID.yaml"
+xml:
+  name: User

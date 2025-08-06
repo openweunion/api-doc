@@ -1,0 +1,11 @@
+{
+  "printWidth": 100,
+  "tabWidth": 2,
+  "useTabs": false,
+  "singleQuote": false,
+  "proseWrap": "preserve",
+  "bracketSpacing": true,
+  "yamlBracketSpacing": true,
+  "yamlQuotes": true,
+  "trailingComma": "none"
+}
