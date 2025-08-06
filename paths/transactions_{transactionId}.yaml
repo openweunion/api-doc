@@ -5,6 +5,8 @@ get:
   summary: Get Transaction
   description: Returns information about a transaction that has the specified Id.
   parameters:
+    - $ref: ../components/parameters/PayloadHeader.yaml
+    - $ref: ../components/parameters/SignatureHeader.yaml
     - name: transactionId
       in: path
       description: "The transaction Id for which you want to retrieve the data."

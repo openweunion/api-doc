@@ -1,0 +1,6 @@
+name: signature
+in: header
+required: true
+schema:
+  type: string
+description: Signature generated from the payload.

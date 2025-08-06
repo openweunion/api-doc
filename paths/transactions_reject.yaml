@@ -4,6 +4,9 @@ post:
   operationId: rejectTransaction
   summary: Reject Transaction
   description: Reject transaction by its ID.
+  parameters: 
+    - $ref: ../components/parameters/PayloadHeader.yaml
+    - $ref: ../components/parameters/SignatureHeader.yaml
   requestBody:
     required: true
     content:

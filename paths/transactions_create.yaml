@@ -4,6 +4,9 @@ post:
   operationId: createTransaction
   summary: Create Transaction
   description: Create a new transaction.
+  parameters: 
+    - $ref: ../components/parameters/PayloadHeader.yaml
+    - $ref: ../components/parameters/SignatureHeader.yaml
   requestBody:
     required: true
     content:

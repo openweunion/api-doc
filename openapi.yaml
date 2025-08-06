@@ -43,15 +43,15 @@ tags:
     description: |
       Offramp endpoints
 
-security:
-  - custom_auth: []
-
 components:
   securitySchemes:
-    custom_auth:
+    ApiKeyAuth:
       type: apiKey
       in: header
       name: apikey
+
+security:
+  - ApiKeyAuth: []
 
 paths:
   "/vasps/{vaspId}":

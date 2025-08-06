@@ -4,6 +4,9 @@ post:
   operationId: listVASPs
   summary: List VASPs
   description: Returns a list of VASPs. The result of VASPs are paginated.
+  parameters:
+    - $ref: ../components/parameters/PayloadHeader.yaml
+    - $ref: ../components/parameters/SignatureHeader.yaml
   requestBody:
     required: true
     content:

@@ -4,6 +4,9 @@ post:
   operationId: listTransactions
   summary: List Transactions
   description: Returns a list of transactions. The result of transactions are paginated.
+  parameters:
+    - $ref: ../components/parameters/PayloadHeader.yaml
+    - $ref: ../components/parameters/SignatureHeader.yaml
   requestBody:
     required: true
     content:

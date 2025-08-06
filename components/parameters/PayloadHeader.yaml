@@ -1,0 +1,6 @@
+name: payload
+in: header
+required: true
+schema:
+  type: string
+description: Base64-encoded JSON string containing request data and timestamp.

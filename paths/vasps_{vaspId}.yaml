@@ -5,6 +5,8 @@ get:
   summary: Get VASP
   description: Returns information about a VASP that has the specified Id.
   parameters:
+    - $ref: ../components/parameters/PayloadHeader.yaml
+    - $ref: ../components/parameters/SignatureHeader.yaml
     - name: vaspId
       in: path
       description: "The VASP Id for which you want to retrieve the data."
