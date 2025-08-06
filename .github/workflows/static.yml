@@ -2,6 +2,12 @@
 name: Deploy static content to Pages
 
 on:
+  # Runs on workflow completion of the Redocly Docs build and deploy workflow
+  workflow_run:
+    workflows: ["Build & Deploy Redocly Docs"]
+    types:
+      - completed
+
   # Runs on pushes targeting the default branch
   push:
     branches: ["main"]
@@ -37,7 +43,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           # Upload entire repository
-          path: './docs'
+          path: "./docs"
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
