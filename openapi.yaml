@@ -8,7 +8,7 @@ info:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
 servers:
-  - url: https://dev.offramp/api/v1
+  - url: https://dev.weunion/api/v1
 
 tags:
   - name: Authentication
@@ -36,7 +36,12 @@ tags:
       The `timestamp` is used to prevent replay attacks. Clients should ensure it's current (±5 minutes).
 
   - name: VASP
-    description: VASP Management
+    description: |
+      VASP (Virtual Asset Service Provider) endpoints
+
+  - name: Offramp Endpoints
+    description: |
+      Offramp endpoints
 
 security:
   - custom_auth: []
@@ -49,7 +54,27 @@ components:
       name: apikey
 
 paths:
-  "/vasps/{vaspID}":
-    $ref: paths/vasps_{vaspID}.yaml
+  "/vasps/{vaspId}":
+    $ref: paths/vasps_{vaspId}.yaml
   "/vasps":
     $ref: paths/vasps.yaml
+  "/transactions/quote":
+    $ref: paths/transactions_quote.yaml
+  "/transactions/create":
+    $ref: paths/transactions_create.yaml
+  "/transactions/cancel":
+    $ref: paths/transactions_cancel.yaml
+  "/transactions/approve":
+    $ref: paths/transactions_approve.yaml
+  "/transactions/accept":
+    $ref: paths/transactions_accept.yaml
+  "/transactions/reject":
+    $ref: paths/transactions_reject.yaml
+  "/transactions/update":
+    $ref: paths/transactions_update.yaml
+  "/transactions/complete":
+    $ref: paths/transactions_complete.yaml
+  "/transactions/{transactionId}":
+    $ref: paths/transactions_{transactionId}.yaml
+  "/transactions/list":
+    $ref: paths/transactions.yaml

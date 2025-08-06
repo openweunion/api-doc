@@ -1,0 +1,20 @@
+type: object
+properties:
+  type:
+    description: "Type of the fee."
+    type: string
+    example: "fiat"
+  offrampFee:
+    description: "Offramp fee amount.."
+    type: string
+    example: "0.01"
+  gatewayFee:
+    description: "Gateway fee amount."
+    type: string
+    example: "0.01"
+  tdsFee:
+    description: "TDS (Tax deductible at Source), in compliance with the regulatory framework set by the regional authority."
+    type: string
+    example: "0.01"
+xml:
+  name: Fee

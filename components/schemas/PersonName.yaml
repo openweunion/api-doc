@@ -1,0 +1,9 @@
+type: object
+properties:
+  nameIdentifier:
+    description: "Name identifier for the person."
+    type: array
+    items:
+      $ref: "./PersonNameIdentifier.yaml"
+xml:
+  name: PersonName

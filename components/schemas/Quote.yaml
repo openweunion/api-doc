@@ -1,0 +1,33 @@
+type: object
+properties:
+  fromAmount:
+    description: "The amount being sent from the sender's account."
+    type: string
+    example: "100.00"
+  toAmount:
+    description: "The amount being received by the recipient's account."
+    type: string
+    example: "100.00"
+  fromCurrency:
+    description: "The currency of the amount being sent."
+    type: string
+    example: "USDC"
+  toCurrency:
+    description: "The currency of the amount being received."
+    type: string
+    example: "USD"
+  chain:
+    description: "The blockchain network used for the transaction."
+    type: string
+    example: "erc20"
+  rate:
+    description: "The exchange rate applied to the transaction."
+    type: string
+    example: "1.00"
+  fees:
+    description: "The fees associated with the transaction."
+    type: array
+    items:
+      $ref: "./Fee.yaml"
+xml:
+  name: Quote

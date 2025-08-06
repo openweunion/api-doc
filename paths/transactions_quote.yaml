@@ -1,0 +1,42 @@
+post:
+  tags:
+    - Offramp Endpoints
+  operationId: quoteTransaction
+  summary: Quote
+  description: Get a quote for a transaction.
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            fromCurrency:
+              description: "The currency of the amount being sold."
+              type: string
+              example: "USDC"
+            toCurrency:
+              description: "The currency of the amount being bought."
+              type: string
+              example: "USD"
+            fromAmount:
+              description: "The amount being sold in the fromCurrency."
+              type: string
+              example: "100.00"
+            chain:
+              description: "The blockchain network for the transaction."
+              type: string
+              example: "erc20"
+  responses:
+    "200":
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Quote.yaml
+    "400":
+      description: Bad Request
+      $ref: ../components/responses/Problem.yaml
+    "403":
+      description: Forbidden
+      $ref: ../components/responses/Problem.yaml

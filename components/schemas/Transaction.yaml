@@ -1,0 +1,45 @@
+type: object
+properties:
+  fromAmount:
+    description: "The amount being sent from the sender's account."
+    type: string
+    example: "100.00"
+  toAmount:
+    description: "The amount being received by the recipient's account."
+    type: string
+    example: "100.00"
+  fromCurrency:
+    description: "The currency of the amount being sent."
+    type: string
+    example: "USDC"
+  toCurrency:
+    description: "The currency of the amount being received."
+    type: string
+    example: "USD"
+  chain:
+    description: "The blockchain network used for the transaction."
+    type: string
+    example: "erc20"
+  status:
+    description: "Status of the transaction."
+    type: string
+    enum:
+      - "NEW"
+      - "CANCELLED"
+      - "SENT"
+      - "ACCEPTED"
+      - "REJECTED"
+      - "TRANSFERRED"
+      - "COMPLETED"
+  transactionHash:
+    description: "The hash of the transaction."
+    type:
+      - string
+      - "null"
+    example: null
+  transactionId:
+    description: "The unique identifier for the transaction."
+    allOf:
+      - $ref: "./TransactionId.yaml"
+xml:
+  name: Transaction

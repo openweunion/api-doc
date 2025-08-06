@@ -1,0 +1,13 @@
+type: object
+properties:
+  naturalPerson:
+    description: "Natural person details."
+    type: object
+    properties:
+      name:
+        description: "Full name of the persons."
+        type: array
+        items:
+          $ref: "./PersonName.yaml"
+xml:
+  name: Person

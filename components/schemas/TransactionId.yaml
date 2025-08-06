@@ -1,0 +1,4 @@
+type: string
+format: uuid
+readOnly: true
+example: 8cdd5b98-86d3-4921-8bb3-a2920f9bb350

@@ -1,0 +1,53 @@
+post:
+  tags:
+    - Offramp Endpoints
+  operationId: createTransaction
+  summary: Create Transaction
+  description: Create a new transaction.
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            fromCurrency:
+              type: string
+              description: "Base currency of the trading pair"
+              example: "USDC"
+            toCurrency:
+              type: string
+              description: "Quote currency of the trading pair"
+              example: "USD"
+            fromAmount:
+              type: string
+              description: "Amount of the base currency to be sold"
+              example: "100.00"
+            toAmount:
+              type: string
+              description: "An estimate of fiat amount to be received"
+              example: "100.00"
+            rate:
+              type: string
+              description: "Exchange rate for the transaction"
+              example: "1.00"
+            travelRuleData:
+              type: object
+              $ref: ../components/schemas/TravelRuleData.yaml
+            withdrawalInfo:
+              type: object
+              $ref: ../components/schemas/WithdrawalInfo.yaml
+
+  responses:
+    "200":
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Transaction.yaml
+    "400":
+      description: Bad Request
+      $ref: ../components/responses/Problem.yaml
+    "403":
+      description: Forbidden
+      $ref: ../components/responses/Problem.yaml

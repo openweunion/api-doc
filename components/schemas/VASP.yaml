@@ -20,12 +20,12 @@ properties:
     description: "Status of the VASP."
     type: string
     enum:
-      - active
-      - inactive
-      - pending
-  vaspID:
+      - "ACTIVE"
+      - "INACTIVE"
+      - "PENDING"
+  vaspId:
     description: "The unique identifier for the VASP."
     allOf:
-      - $ref: "./VASPID.yaml"
+      - $ref: "./VASPId.yaml"
 xml:
-  name: User
+  name: VASP
