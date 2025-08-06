@@ -20,6 +20,14 @@ properties:
     description: "The blockchain network used for the transaction."
     type: string
     example: "erc20"
+  travelRuleData:
+    description: "Travel Rule data for the transaction."
+    type: object
+    $ref: ./TravelRuleData.yaml
+  withdrawalInfo:
+    description: "Withdrawal information for the transaction."
+    type: object
+    $ref: ./WithdrawalInfo.yaml
   status:
     description: "Status of the transaction."
     type: string
@@ -33,9 +41,7 @@ properties:
       - "COMPLETED"
   transactionHash:
     description: "The hash of the transaction."
-    type:
-      - string
-      - "null"
+    type: [string, "null"]
     example: null
   transactionId:
     description: "The unique identifier for the transaction."

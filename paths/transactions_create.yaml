@@ -44,7 +44,13 @@ post:
       content:
         application/json:
           schema:
-            $ref: ../components/schemas/Transaction.yaml
+            allOf:
+              - $ref: "../components/schemas/Response.yaml"
+              - type: object
+                properties:
+                  data:
+                    oneOf:
+                      - $ref: "../components/schemas/Transaction.yaml"
     "400":
       description: Bad Request
       $ref: ../components/responses/Problem.yaml

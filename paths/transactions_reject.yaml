@@ -21,16 +21,16 @@ post:
       content:
         application/json:
           schema:
-            $ref: ../components/schemas/Transaction.yaml
-          example:
-            fromAmount: "100.00"
-            toAmount: "100.00"
-            fromCurrency: "USDC"
-            toCurrency: "USD"
-            chain: "erc20"
-            status: "REJECTED"
-            transactionHash: null
-            transactionId: "8cdd5b98-86d3-4921-8bb3-a2920f9bb350"
+            allOf:
+              - $ref: "../components/schemas/Response.yaml"
+              - type: object
+                properties:
+                  data:
+                    oneOf:
+                      - allOf:
+                          - $ref: "../components/schemas/Transaction.yaml"
+                          - example:
+                              status: "REJECTED"
     "400":
       description: Bad Request
       $ref: ../components/responses/Problem.yaml

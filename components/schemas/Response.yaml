@@ -1,0 +1,12 @@
+type: object
+properties:
+  message:
+    type: string
+    example: "success"
+  code:
+    type: integer
+    example: 0
+  data:
+    description: "The data returned in the response."
+xml:
+  name: Response

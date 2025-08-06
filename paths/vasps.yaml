@@ -25,9 +25,15 @@ post:
       content:
         application/json:
           schema:
-            type: array
-            items:
-              $ref: "../components/schemas/VASP.yaml"
+            allOf:
+              - $ref: "../components/schemas/Response.yaml"
+              - type: object
+                properties:
+                  data:
+                    oneOf:
+                      - type: array
+                        items:
+                          $ref: "../components/schemas/VASP.yaml"
     "400":
       description: Bad Request
       $ref: ../components/responses/Problem.yaml
