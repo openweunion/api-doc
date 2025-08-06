@@ -46,6 +46,6 @@ properties:
   transactionId:
     description: "The unique identifier for the transaction."
     allOf:
-      - $ref: "./TransactionId.yaml"
+      - $ref: ./TransactionId.yaml
 xml:
   name: Transaction

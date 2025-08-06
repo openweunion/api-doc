@@ -19,12 +19,12 @@ get:
         application/json:
           schema:
             allOf:
-              - $ref: "../components/schemas/Response.yaml"
+              - $ref: ../components/schemas/Response.yaml
               - type: object
                 properties:
                   data:
                     oneOf:
-                      - $ref: "../components/schemas/VASP.yaml"
+                      - $ref: ../components/schemas/VASP.yaml
     "400":
       description: Bad Request
       $ref: ../components/responses/Problem.yaml

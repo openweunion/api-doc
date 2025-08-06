@@ -2,7 +2,7 @@ type: object
 properties:
   beneficiaryPerson:
     description: "Beneficiary person details."
-    $ref: "./Person.yaml"
+    $ref: ./Person.yaml
   accountNumber:
     description: "Wallet address on Ethereum or Bitcoin, or account number of beneficiary person."
     type: string

@@ -22,13 +22,13 @@ post:
         application/json:
           schema:
             allOf:
-              - $ref: "../components/schemas/Response.yaml"
+              - $ref: ../components/schemas/Response.yaml
               - type: object
                 properties:
                   data:
                     oneOf:
                       - allOf:
-                          - $ref: "../components/schemas/Transaction.yaml"
+                          - $ref: ../components/schemas/Transaction.yaml
                           - example:
                               status: "REJECTED"
     "400":

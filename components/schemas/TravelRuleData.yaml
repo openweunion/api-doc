@@ -10,9 +10,9 @@ properties:
     example: "0830a077-ef4f-42d2-8416-1122f9b98fd8"
   originator:
     description: "Details of the originator involved in the transaction."
-    $ref: "./Originator.yaml"
+    $ref: ./Originator.yaml
   beneficiary:
     description: "Details of the beneficiary involved in the transaction."
-    $ref: "./Beneficiary.yaml"
+    $ref: ./Beneficiary.yaml
 xml:
   name: TravelRuleData

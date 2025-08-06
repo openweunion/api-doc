@@ -4,6 +4,6 @@ properties:
     description: "Name identifier for the person."
     type: array
     items:
-      $ref: "./PersonNameIdentifier.yaml"
+      $ref: ./PersonNameIdentifier.yaml
 xml:
   name: PersonName

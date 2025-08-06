@@ -28,6 +28,6 @@ properties:
     description: "The fees associated with the transaction."
     type: array
     items:
-      $ref: "./Fee.yaml"
+      $ref: ./Fee.yaml
 xml:
   name: Quote

@@ -8,6 +8,6 @@ properties:
         description: "Full name of the persons."
         type: array
         items:
-          $ref: "./PersonName.yaml"
+          $ref: ./PersonName.yaml
 xml:
   name: Person

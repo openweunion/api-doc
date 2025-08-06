@@ -26,6 +26,6 @@ properties:
   vaspId:
     description: "The unique identifier for the VASP."
     allOf:
-      - $ref: "./VASPId.yaml"
+      - $ref: ./VASPId.yaml
 xml:
   name: VASP

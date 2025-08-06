@@ -34,12 +34,12 @@ post:
         application/json:
           schema:
             allOf:
-              - $ref: "../components/schemas/Response.yaml"
+              - $ref: ../components/schemas/Response.yaml
               - type: object
                 properties:
                   data:
                     oneOf:
-                      - $ref: "../components/schemas/Quote.yaml"
+                      - $ref: ../components/schemas/Quote.yaml
     "400":
       description: Bad Request
       $ref: ../components/responses/Problem.yaml
