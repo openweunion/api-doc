@@ -1,6 +1,5 @@
 # Redocly build output
 .redocly/
-docs/
 
 # Redocly lint ignore file
 .redocly.lint-ignore.yaml
