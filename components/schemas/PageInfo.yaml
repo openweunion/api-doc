@@ -1,7 +1,7 @@
 type: object
 properties:
-  startIndex:
-    description: "The index of the first item in the current page."
+  page:
+    description: "The page number to retrieve."
     type: number
     example: 1
   pageSize:
