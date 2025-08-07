@@ -66,7 +66,7 @@ Each webhook request includes the following fields:
         "remitChannel": "FPS",
         "swiftCode": "SWIFT123"
       },
-      "status": "SENT",
+      "status": "APPROVED",
       "transactionHash": null,
       "createdTime": "2025-08-07T09:00:00Z",
       "updatedTime": "2025-08-07T10:30:00Z",

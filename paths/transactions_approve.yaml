@@ -4,7 +4,7 @@ post:
   operationId: approveTransaction
   summary: Approve Transaction
   description: Approve transaction by its ID.
-  parameters: 
+  parameters:
     - $ref: ../components/parameters/PayloadHeader.yaml
     - $ref: ../components/parameters/SignatureHeader.yaml
   requestBody:
@@ -33,7 +33,7 @@ post:
                       - allOf:
                           - $ref: ../components/schemas/Transaction.yaml
                           - example:
-                              status: "SENT"
+                              status: "APPROVED"
     "400":
       description: Bad Request
       $ref: ../components/responses/Problem.yaml
