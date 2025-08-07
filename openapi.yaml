@@ -56,8 +56,9 @@ security:
 paths:
   "/vasps/{vaspId}":
     $ref: paths/vasps_{vaspId}.yaml
-  "/vasps":
+  "/vasps/list":
     $ref: paths/vasps.yaml
+
   "/transactions/quote":
     $ref: paths/transactions_quote.yaml
   "/transactions/create":
