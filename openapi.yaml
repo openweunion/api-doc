@@ -79,3 +79,6 @@ paths:
     $ref: paths/transactions_{transactionId}.yaml
   "/transactions/list":
     $ref: paths/transactions.yaml
+
+  "/webhook/update":
+    $ref: paths/webhook_update.yaml

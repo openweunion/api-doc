@@ -1,0 +1,43 @@
+post:
+  tags:
+    - Webhook Endpoints
+  operationId: updateWebhookURL
+  summary: Set/Update Webhook URL
+  description: Set or update the webhook URL for receiving notifications.
+  parameters:
+    - $ref: ../components/parameters/PayloadHeader.yaml
+    - $ref: ../components/parameters/SignatureHeader.yaml
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            webhookURL:
+              type: string
+              description: "The URL to which webhook notifications will be sent."
+              example: "https://example.com/webhook"
+  responses:
+    "200":
+      description: Success
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: ../components/schemas/Response.yaml
+              - type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      webhookURL:
+                        type: string
+                        description: "The updated webhook URL."
+                        example: "https://example.com/webhook"
+    "400":
+      description: Bad Request
+      $ref: ../components/responses/Problem.yaml
+    "403":
+      description: Forbidden
+      $ref: ../components/responses/Problem.yaml
