@@ -12,28 +12,8 @@ servers:
 
 tags:
   - name: Authentication
-    description: |
-      This API requires all requests to be authenticated using a custom signature scheme.
-
-      Each request must include the following headers:
-      - `apikey`: Assigned API key.
-      - `payload`: Base64-encoded JSON string containing the request body and a timestamp.
-      - `signature`: HMAC-SHA512 hash of the payload, signed using your API secret.
-
-      Payload structure:
-      ```json
-      {
-        "body": { /* request body object */ },
-        "timestamp": "unix-milliseconds"
-      }
-      ```
-
-      Signature is calculated as:
-      ```
-      signature = HMAC_SHA512(payload, secret)
-      ```
-
-      The `timestamp` is used to prevent replay attacks. Clients should ensure it's current (±5 minutes).
+    description:
+      $ref: "docs/authentication.md"
 
   - name: VASP
     description: |
@@ -42,6 +22,10 @@ tags:
   - name: Offramp Endpoints
     description: |
       Offramp endpoints
+
+  - name: Webhook Endpoints
+    description:
+      $ref: "docs/webhook.md"
 
 components:
   securitySchemes:
