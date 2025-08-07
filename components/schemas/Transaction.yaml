@@ -43,6 +43,16 @@ properties:
     description: "The hash of the transaction."
     type: [string, "null"]
     example: null
+  createdTime:
+    description: "The time when the transaction was created (ISO 8601 format)."
+    type: string
+    format: date-time
+    example: "2025-08-07T09:00:00Z"
+  updatedTime:
+    description: "The time when the transaction was last updated (ISO 8601 format)."
+    type: string
+    format: date-time
+    example: "2025-08-07T10:30:00Z"
   transactionId:
     description: "The unique identifier for the transaction."
     allOf:

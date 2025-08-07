@@ -23,6 +23,16 @@ properties:
       - "ACTIVE"
       - "INACTIVE"
       - "PENDING"
+  createdTime:
+    description: "The time when the VASP was created (ISO 8601 format)."
+    type: string
+    format: date-time
+    example: "2025-08-07T09:00:00Z"
+  updatedTime:
+    description: "The time when the VASP was last updated (ISO 8601 format)."
+    type: string
+    format: date-time
+    example: "2025-08-07T10:30:00Z"
   vaspId:
     description: "The unique identifier for the VASP."
     allOf:
