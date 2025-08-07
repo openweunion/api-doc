@@ -1,9 +1,9 @@
 post:
   tags:
     - Offramp Endpoints
-  operationId: listTransactions
-  summary: List Transactions
-  description: Returns a list of transactions. The result of transactions are paginated.
+  operationId: createTransaction
+  summary: Create Transaction
+  description: Create a new transaction.
   parameters:
     - $ref: ../components/parameters/PayloadHeader.yaml
     - $ref: ../components/parameters/SignatureHeader.yaml
@@ -14,14 +14,33 @@ post:
         schema:
           type: object
           properties:
-            page:
-              type: number
-              description: "The page number to retrieve."
-              example: 1
-            pageSize:
-              type: number
-              description: "The number of items per page."
-              example: 10
+            fromCurrency:
+              type: string
+              description: "Base currency of the trading pair"
+              example: "USDC"
+            toCurrency:
+              type: string
+              description: "Quote currency of the trading pair"
+              example: "USD"
+            fromAmount:
+              type: string
+              description: "Amount of the base currency to be sold"
+              example: "100.00"
+            toAmount:
+              type: string
+              description: "An estimate of fiat amount to be received"
+              example: "100.00"
+            rate:
+              type: string
+              description: "Exchange rate for the transaction"
+              example: "1.00"
+            travelRuleData:
+              type: object
+              $ref: ../components/schemas/TravelRuleData.yaml
+            withdrawalInfo:
+              type: object
+              $ref: ../components/schemas/WithdrawalInfo.yaml
+
   responses:
     "200":
       description: Success
@@ -34,9 +53,55 @@ post:
                 properties:
                   data:
                     oneOf:
-                      - type: array
-                        items:
-                          $ref: ../components/schemas/Transaction.yaml
+                      - $ref: ../components/schemas/Transaction.yaml
+    "400":
+      description: Bad Request
+      $ref: ../components/responses/Problem.yaml
+    "403":
+      description: Forbidden
+      $ref: ../components/responses/Problem.yaml
+
+put:
+  tags:
+    - Offramp Endpoints
+  operationId: updateTransaction
+  summary: Update Transaction Hash
+  description: Update transaction hash by its ID.
+  parameters:
+    - $ref: ../components/parameters/PayloadHeader.yaml
+    - $ref: ../components/parameters/SignatureHeader.yaml
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            transactionId:
+              type: string
+              description: "The unique identifier for the transaction."
+              example: 8cdd5b98-86d3-4921-8bb3-a2920f9bb350
+            transactionHash:
+              type: string
+              description: "The hash of the transaction."
+              example: "0x1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef"
+  responses:
+    "200":
+      description: Success
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: ../components/schemas/Response.yaml
+              - type: object
+                properties:
+                  data:
+                    oneOf:
+                      - allOf:
+                          - $ref: ../components/schemas/Transaction.yaml
+                          - example:
+                              status: "TRANSFERRED"
+                              transactionHash: "0x1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef"
     "400":
       description: Bad Request
       $ref: ../components/responses/Problem.yaml

@@ -1,9 +1,9 @@
 post:
   tags:
-    - VASP
-  operationId: listVASPs
-  summary: List VASPs
-  description: Returns a list of VASPs. The result of VASPs are paginated.
+    - Offramp Endpoints
+  operationId: listTransactions
+  summary: List Transactions
+  description: Returns a list of transactions. The result of transactions are paginated.
   parameters:
     - $ref: ../components/parameters/PayloadHeader.yaml
     - $ref: ../components/parameters/SignatureHeader.yaml
@@ -34,9 +34,15 @@ post:
                 properties:
                   data:
                     oneOf:
-                      - type: array
-                        items:
-                          $ref: ../components/schemas/VASP.yaml
+                      - type: object
+                        properties:
+                          pageInfo:
+                            $ref: ../components/schemas/PageInfo.yaml
+                          transactions:
+                            description: "List of transactions."
+                            type: array
+                            items:
+                              $ref: ../components/schemas/Transaction.yaml
     "400":
       description: Bad Request
       $ref: ../components/responses/Problem.yaml
