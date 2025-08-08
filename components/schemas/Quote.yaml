@@ -1,5 +1,15 @@
 type: object
 properties:
+  quoteId:
+    allOf:
+      - $ref: QuoteID.yaml
+  sourceVASPId:
+    type: string
+    $ref: ./VASPId.yaml
+  paymentCompany:
+    description: "The payment company connected to the VASP."
+    type: string
+    example: "HashKey"
   fromAmount:
     description: "The amount being sent from the sender's account."
     type: string
@@ -24,10 +34,14 @@ properties:
     description: "The exchange rate applied to the transaction."
     type: string
     example: "1.00"
+  expiredTime:
+    description: "The time when the quote expires (ISO 8601 format)."
+    type: string
+    format: date-time
+    example: "2025-08-08T15:04:05Z"
   fees:
     description: "The fees associated with the transaction."
-    type: array
-    items:
-      $ref: ./Fee.yaml
+    type: object
+    $ref: ./Fee.yaml
 xml:
   name: Quote

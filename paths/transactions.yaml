@@ -14,26 +14,9 @@ post:
         schema:
           type: object
           properties:
-            fromCurrency:
+            quoteId:
               type: string
-              description: "Base currency of the trading pair"
-              example: "USDC"
-            toCurrency:
-              type: string
-              description: "Quote currency of the trading pair"
-              example: "USD"
-            fromAmount:
-              type: string
-              description: "Amount of the base currency to be sold"
-              example: "100.00"
-            toAmount:
-              type: string
-              description: "An estimate of fiat amount to be received"
-              example: "100.00"
-            rate:
-              type: string
-              description: "Exchange rate for the transaction"
-              example: "1.00"
+              $ref: ../components/schemas/QuoteID.yaml
             travelRuleData:
               type: object
               $ref: ../components/schemas/TravelRuleData.yaml

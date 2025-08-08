@@ -4,7 +4,7 @@ post:
   operationId: quoteTransaction
   summary: Quote
   description: Get a quote for a transaction.
-  parameters: 
+  parameters:
     - $ref: ../components/parameters/PayloadHeader.yaml
     - $ref: ../components/parameters/SignatureHeader.yaml
   requestBody:
@@ -14,6 +14,10 @@ post:
         schema:
           type: object
           properties:
+            sourceVASPId:
+              description: "The ID of the source VASP."
+              type: string
+              $ref: ../components/schemas/VASPId.yaml
             fromCurrency:
               description: "The currency of the amount being sold."
               type: string
@@ -41,8 +45,11 @@ post:
               - type: object
                 properties:
                   data:
+                    description: "List of VASPs."
                     oneOf:
-                      - $ref: ../components/schemas/Quote.yaml
+                      - type: array
+                        items:
+                          $ref: ../components/schemas/Quote.yaml
     "400":
       description: Bad Request
       $ref: ../components/responses/Problem.yaml
