@@ -4,12 +4,6 @@ properties:
     description: "Account Number (for fiat only)"
     type: string
     example: "1234567890"
-  address:
-    description: "Address (for crypto only; memo, if applicable, is separated by '|' char)"
-  asset:
-    description: "Asset (for crypto only)"
-    type: string
-    example: "USDC"
   bankCode:
     description: "Bank Code (for fiat only; mandatory if swift code is not available)"
     type: string
@@ -18,10 +12,6 @@ properties:
     description: "Currency (for fiat only)"
     type: string
     example: "USD"
-  network:
-    description: "Network (for crypto only)"
-    type: string
-    example: "erc20"
   qty:
     description: "Quantity/Amount"
     type: number

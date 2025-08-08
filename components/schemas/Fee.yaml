@@ -4,17 +4,21 @@ properties:
     description: "Type of the fee."
     type: string
     example: "fiat"
+  currency:
+    description: "Currency of the fee."
+    type: string
+    example: "USD"
   offrampFee:
     description: "Offramp fee amount.."
     type: string
-    example: "0.01"
+    example: "1.00"
   gatewayFee:
     description: "Gateway fee amount."
     type: string
-    example: "0.01"
+    example: "1.00"
   tdsFee:
     description: "TDS (Tax deductible at Source), in compliance with the regulatory framework set by the regional authority."
     type: string
-    example: "0.01"
+    example: "0.00"
 xml:
   name: Fee

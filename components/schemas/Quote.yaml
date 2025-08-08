@@ -39,7 +39,7 @@ properties:
     type: string
     format: date-time
     example: "2025-08-08T15:04:05Z"
-  fees:
+  fee:
     description: "The fees associated with the transaction."
     type: object
     $ref: ./Fee.yaml
