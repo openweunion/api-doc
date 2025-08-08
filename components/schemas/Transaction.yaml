@@ -1,5 +1,8 @@
 type: object
 properties:
+  transactionId:
+    allOf:
+      - $ref: ./TransactionId.yaml
   fromAmount:
     description: "The amount being sent from the sender's account."
     type: string
@@ -53,9 +56,5 @@ properties:
     type: string
     format: date-time
     example: "2025-08-07T10:30:00Z"
-  transactionId:
-    description: "The unique identifier for the transaction."
-    allOf:
-      - $ref: ./TransactionId.yaml
 xml:
   name: Transaction

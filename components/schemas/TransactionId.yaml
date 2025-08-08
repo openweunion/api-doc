@@ -1,4 +1,4 @@
 type: string
 format: uuid
-readOnly: true
+description: "The unique identifier for the transaction."
 example: 8cdd5b98-86d3-4921-8bb3-a2920f9bb350

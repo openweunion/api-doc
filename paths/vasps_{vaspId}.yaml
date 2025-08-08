@@ -9,11 +9,10 @@ get:
     - $ref: ../components/parameters/SignatureHeader.yaml
     - name: vaspId
       in: path
-      description: "The VASP Id for which you want to retrieve the data."
-      example: 89e7b5d7-80f0-496f-a2f4-b82421cf7fc6
       required: true
       schema:
         type: string
+        $ref: ../components/schemas/VASPId.yaml
   responses:
     "200":
       description: Success

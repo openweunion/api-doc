@@ -4,7 +4,7 @@ post:
   operationId: cancelTransaction
   summary: Cancel Transaction
   description: Cancel transaction by its ID.
-  parameters: 
+  parameters:
     - $ref: ../components/parameters/PayloadHeader.yaml
     - $ref: ../components/parameters/SignatureHeader.yaml
   requestBody:
@@ -16,8 +16,7 @@ post:
           properties:
             transactionId:
               type: string
-              description: "The unique identifier for the transaction."
-              example: 8cdd5b98-86d3-4921-8bb3-a2920f9bb350
+              $ref: ../components/schemas/TransactionId.yaml
   responses:
     "200":
       description: Success

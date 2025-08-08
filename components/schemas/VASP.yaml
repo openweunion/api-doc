@@ -1,5 +1,8 @@
 type: object
 properties:
+  vaspId:
+    allOf:
+      - $ref: ./VASPId.yaml
   name:
     description: "Name of the VASP."
     type: string
@@ -33,9 +36,5 @@ properties:
     type: string
     format: date-time
     example: "2025-08-07T10:30:00Z"
-  vaspId:
-    description: "The unique identifier for the VASP."
-    allOf:
-      - $ref: ./VASPId.yaml
 xml:
   name: VASP

@@ -62,8 +62,7 @@ put:
           properties:
             transactionId:
               type: string
-              description: "The unique identifier for the transaction."
-              example: 8cdd5b98-86d3-4921-8bb3-a2920f9bb350
+              $ref: ../components/schemas/TransactionId.yaml
             transactionHash:
               type: string
               description: "The hash of the transaction."

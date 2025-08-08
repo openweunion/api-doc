@@ -37,6 +37,7 @@ post:
                       - type: object
                         properties:
                           pageInfo:
+                            description: "Pagination information."
                             $ref: ../components/schemas/PageInfo.yaml
                           vasps:
                             description: "List of VASPs."

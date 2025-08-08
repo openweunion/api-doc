@@ -9,11 +9,10 @@ get:
     - $ref: ../components/parameters/SignatureHeader.yaml
     - name: transactionId
       in: path
-      description: "The transaction Id for which you want to retrieve the data."
-      example: 8cdd5b98-86d3-4921-8bb3-a2920f9bb350
       required: true
       schema:
         type: string
+        $ref: ../components/schemas/TransactionId.yaml
   responses:
     "200":
       description: Success
