@@ -12,9 +12,9 @@ To authenticate every request, include the following headers:
 
 ```javascript
 const headers = {
-  apikey: apiKey,
-  payload: payload,
-  signature: signature,
+  'apikey': apiKey,
+  'payload': payload,
+  'signature': signature,
 };
 ```
 
