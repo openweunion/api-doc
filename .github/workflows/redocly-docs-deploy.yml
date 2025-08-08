@@ -44,6 +44,9 @@ jobs:
       - name: Build Redocly HTML
         run: npx redocly build-docs openapi.yaml -o dist/index.html
 
+      - name: Copy images
+        run: cp -r images dist/images
+
       - name: Upload artifact
         id: upload
         uses: actions/upload-artifact@v4

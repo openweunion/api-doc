@@ -11,6 +11,10 @@ servers:
   - url: https://dev.weunion/api/v1
 
 tags:
+  - name: Overview
+    description:
+      $ref: "docs/overview.md"
+
   - name: Authentication
     description:
       $ref: "docs/authentication.md"
