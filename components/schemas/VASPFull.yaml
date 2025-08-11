@@ -10,6 +10,21 @@ properties:
     description: "Description of the VASP."
     type: string
     example: VASP1 description
+  email:
+    description: "Contact email for the VASP."
+    type: string
+    example: support@vasp1.com
+  webhookUrl:
+    description: "Webhook URL for the VASP to receive notifications."
+    type: string
+    example: https://vasp1.com/webhook
+  status:
+    description: "Status of the VASP."
+    type: string
+    enum:
+      - "ACTIVE"
+      - "INACTIVE"
+      - "PENDING"
   createdTime:
     description: "The time when the VASP was created (ISO 8601 format)."
     type: string

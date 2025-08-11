@@ -1,8 +1,7 @@
 type: object
 properties:
   id:
-    allOf:
-      - $ref: ./TransactionId.yaml
+    $ref: ./TransactionId.yaml
   quoteId:
     type: string
     $ref: ./QuoteID.yaml

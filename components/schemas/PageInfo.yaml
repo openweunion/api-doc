@@ -3,14 +3,15 @@ properties:
   page:
     description: "The page number to retrieve."
     type: number
-    example: 1
   pageSize:
     description: "The number of items per page."
     type: number
-    example: 10
   totalRows:
     description: "The total number of items across all pages."
     type: number
-    example: 100
+example:
+  page: 1
+  pageSize: 10
+  totalRows: 100
 xml:
   name: PageInfo

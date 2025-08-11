@@ -1,8 +1,7 @@
 type: object
 properties:
   id:
-    allOf:
-      - $ref: QuoteID.yaml
+    $ref: QuoteID.yaml
   sourceVASPId:
     type: string
     $ref: ./VASPId.yaml

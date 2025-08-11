@@ -3,10 +3,11 @@ properties:
   primaryIdentifier:
     description: "Primary identifier for the person name."
     type: string
-    example: "Smith"
   secondaryIdentifier:
     description: "Secondary identifier for the person name."
     type: string
-    example: "John"
+example:
+  primaryIdentifier: "Smith"
+  secondaryIdentifier: "John"
 xml:
   name: PersonNameIdentifier
