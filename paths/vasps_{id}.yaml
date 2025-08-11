@@ -1,18 +1,18 @@
 get:
   tags:
-    - Offramp Endpoints
-  operationId: getTransactionById
-  summary: Get Transaction
-  description: Returns information about a transaction that has the specified Id.
+    - VASP
+  operationId: getVASPById
+  summary: Get VASP
+  description: Returns information about a VASP that has the specified Id.
   parameters:
     - $ref: ../components/parameters/PayloadHeader.yaml
     - $ref: ../components/parameters/SignatureHeader.yaml
-    - name: transactionId
+    - name: id
       in: path
       required: true
       schema:
         type: string
-        $ref: ../components/schemas/TransactionId.yaml
+        $ref: ../components/schemas/VASPId.yaml
   responses:
     "200":
       description: Success
@@ -25,7 +25,7 @@ get:
                 properties:
                   data:
                     oneOf:
-                      - $ref: ../components/schemas/Transaction.yaml
+                      - $ref: ../components/schemas/VASP.yaml
     "400":
       description: Bad Request
       $ref: ../components/responses/Problem.yaml

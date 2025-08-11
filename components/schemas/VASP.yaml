@@ -1,6 +1,6 @@
 type: object
 properties:
-  vaspId:
+  id:
     allOf:
       - $ref: ./VASPId.yaml
   name:

@@ -7,7 +7,7 @@ properties:
   currency:
     description: "Currency of the fee."
     type: string
-    example: "USD"
+    example: "HKD"
   offrampFee:
     description: "Offramp fee amount.."
     type: string

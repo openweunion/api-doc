@@ -1,6 +1,6 @@
 type: object
 properties:
-  quoteId:
+  id:
     allOf:
       - $ref: QuoteID.yaml
   sourceVASPId:
@@ -25,7 +25,7 @@ properties:
   toCurrency:
     description: "The currency of the amount being received."
     type: string
-    example: "USD"
+    example: "HKD"
   chain:
     description: "The blockchain network used for the transaction."
     type: string
@@ -33,7 +33,7 @@ properties:
   rate:
     description: "The exchange rate applied to the transaction."
     type: string
-    example: "1.00"
+    example: "7.80"
   expiredTime:
     description: "The time when the quote expires (ISO 8601 format)."
     type: string

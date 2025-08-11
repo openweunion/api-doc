@@ -1,9 +1,9 @@
 post:
   tags:
     - Offramp Endpoints
-  operationId: quoteTransaction
-  summary: Quote
-  description: Get a quote for a transaction.
+  operationId: ListQuotes
+  summary: List Quotes
+  description: Returns a list of quotes based on the provided parameters.
   parameters:
     - $ref: ../components/parameters/PayloadHeader.yaml
     - $ref: ../components/parameters/SignatureHeader.yaml
@@ -25,7 +25,7 @@ post:
             toCurrency:
               description: "The currency of the amount being bought."
               type: string
-              example: "USD"
+              example: "HKD"
             fromAmount:
               description: "The amount being sold in the fromCurrency."
               type: string
@@ -45,7 +45,7 @@ post:
               - type: object
                 properties:
                   data:
-                    description: "List of VASPs."
+                    description: "List of quotes."
                     oneOf:
                       - type: array
                         items:

@@ -11,7 +11,7 @@ properties:
   ccy:
     description: "Currency (for fiat only)"
     type: string
-    example: "USD"
+    example: "HKD"
   qty:
     description: "Quantity/Amount"
     type: number

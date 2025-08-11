@@ -42,13 +42,13 @@ security:
   - ApiKeyAuth: []
 
 paths:
-  "/vasps/{vaspId}":
-    $ref: paths/vasps_{vaspId}.yaml
+  "/vasps/{id}":
+    $ref: paths/vasps_{id}.yaml
   "/vasps/list":
     $ref: paths/vasps_list.yaml
 
-  "/transactions/quote":
-    $ref: paths/transactions_quote.yaml
+  "/quotes/list":
+    $ref: paths/quotes_list.yaml
   "/transactions":
     $ref: paths/transactions.yaml
   "/transactions/cancel":
@@ -61,8 +61,8 @@ paths:
     $ref: paths/transactions_reject.yaml
   "/transactions/complete":
     $ref: paths/transactions_complete.yaml
-  "/transactions/{transactionId}":
-    $ref: paths/transactions_{transactionId}.yaml
+  "/transactions/{id}":
+    $ref: paths/transactions_{id}.yaml
   "/transactions/list":
     $ref: paths/transactions_list.yaml
 

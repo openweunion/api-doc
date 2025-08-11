@@ -60,7 +60,7 @@ put:
         schema:
           type: object
           properties:
-            transactionId:
+            id:
               type: string
               $ref: ../components/schemas/TransactionId.yaml
             transactionHash:

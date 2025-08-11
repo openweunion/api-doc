@@ -1,6 +1,6 @@
 type: object
 properties:
-  transactionId:
+  id:
     allOf:
       - $ref: ./TransactionId.yaml
   fromAmount:
@@ -18,7 +18,7 @@ properties:
   toCurrency:
     description: "The currency of the amount being received."
     type: string
-    example: "USD"
+    example: "HKD"
   chain:
     description: "The blockchain network used for the transaction."
     type: string
