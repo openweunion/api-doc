@@ -1,6 +1,6 @@
 post:
   tags:
-    - Offramp Endpoints
+    - Offramp Transaction Endpoints
   operationId: listTransactions
   summary: List Transactions
   description: Returns a list of transactions. The result of transactions are paginated.

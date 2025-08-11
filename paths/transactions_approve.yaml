@@ -1,6 +1,6 @@
 post:
   tags:
-    - Offramp Endpoints
+    - Offramp Transaction Endpoints
   operationId: approveTransaction
   summary: Approve Transaction
   description: Approve transaction by its ID.

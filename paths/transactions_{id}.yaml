@@ -1,6 +1,6 @@
 get:
   tags:
-    - Offramp Endpoints
+    - Offramp Transaction Endpoints
   operationId: getTransactionById
   summary: Get Transaction
   description: Returns information about a transaction that has the specified Id.

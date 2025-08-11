@@ -1,6 +1,6 @@
 post:
   tags:
-    - Offramp Endpoints
+    - Offramp Transaction Endpoints
   operationId: completeTransaction
   summary: Complete Transaction
   description: Complete transaction by its ID.

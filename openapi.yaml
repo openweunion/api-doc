@@ -19,13 +19,17 @@ tags:
     description:
       $ref: "docs/authentication.md"
 
-  - name: VASP
+  - name: VASP Endpoints
     description: |
-      VASP (Virtual Asset Service Provider) endpoints
+      Endpoints for managing Virtual Asset Service Providers (VASPs), including listing and retrieving VASP information.
 
-  - name: Offramp Endpoints
+  - name: Quote Endpoints
     description: |
-      Offramp endpoints
+      Endpoints for managing quotes, including listing and retrieving quotes.
+
+  - name: Offramp Transaction Endpoints
+    description: |
+      Endpoints for managing offramp transactions, including creation, approval, rejection, and status updates.
 
   - name: Webhook Endpoints
     description:
@@ -47,8 +51,11 @@ paths:
   "/vasps/list":
     $ref: paths/vasps_list.yaml
 
+  "/quotes/{id}":
+    $ref: paths/quotes_{id}.yaml
   "/quotes/list":
     $ref: paths/quotes_list.yaml
+
   "/transactions":
     $ref: paths/transactions.yaml
   "/transactions/cancel":

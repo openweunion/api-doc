@@ -1,6 +1,6 @@
 get:
   tags:
-    - VASP
+    - VASP Endpoints
   operationId: getVASPById
   summary: Get VASP
   description: Returns information about a VASP that has the specified Id.

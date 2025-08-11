@@ -1,6 +1,6 @@
 post:
   tags:
-    - Offramp Endpoints
+    - Offramp Transaction Endpoints
   operationId: createTransaction
   summary: Create Transaction
   description: Create a new transaction.
@@ -46,7 +46,7 @@ post:
 
 put:
   tags:
-    - Offramp Endpoints
+    - Offramp Transaction Endpoints
   operationId: updateTransaction
   summary: Update Transaction Hash
   description: Update transaction hash by its ID.

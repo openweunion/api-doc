@@ -1,6 +1,6 @@
 post:
   tags:
-    - Offramp Endpoints
+    - Offramp Transaction Endpoints
   operationId: cancelTransaction
   summary: Cancel Transaction
   description: Cancel transaction by its ID.

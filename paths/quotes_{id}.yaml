@@ -1,22 +1,18 @@
-post:
+get:
   tags:
-    - Offramp Transaction Endpoints
-  operationId: rejectTransaction
-  summary: Reject Transaction
-  description: Reject transaction by its ID.
+    - Quote Endpoints
+  operationId: getQuoteById
+  summary: Get Quote
+  description: Returns information about a quote that has the specified Id.
   parameters:
     - $ref: ../components/parameters/PayloadHeader.yaml
     - $ref: ../components/parameters/SignatureHeader.yaml
-  requestBody:
-    required: true
-    content:
-      application/json:
-        schema:
-          type: object
-          properties:
-            id:
-              type: string
-              $ref: ../components/schemas/TransactionId.yaml
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+        $ref: ../components/schemas/QuoteID.yaml
   responses:
     "200":
       description: Success
@@ -29,10 +25,7 @@ post:
                 properties:
                   data:
                     oneOf:
-                      - allOf:
-                          - $ref: ../components/schemas/Transaction.yaml
-                          - example:
-                              status: "REJECTED"
+                      - $ref: ../components/schemas/Quote.yaml
     "400":
       description: Bad Request
       $ref: ../components/responses/Problem.yaml

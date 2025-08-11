@@ -3,26 +3,9 @@ properties:
   id:
     allOf:
       - $ref: ./TransactionId.yaml
-  fromAmount:
-    description: "The amount being sent from the sender's account."
+  quoteId:
     type: string
-    example: "100.00"
-  toAmount:
-    description: "The amount being received by the recipient's account."
-    type: string
-    example: "100.00"
-  fromCurrency:
-    description: "The currency of the amount being sent."
-    type: string
-    example: "USDC"
-  toCurrency:
-    description: "The currency of the amount being received."
-    type: string
-    example: "HKD"
-  chain:
-    description: "The blockchain network used for the transaction."
-    type: string
-    example: "erc20"
+    $ref: ./QuoteID.yaml
   travelRuleData:
     description: "Travel Rule data for the transaction."
     type: object
