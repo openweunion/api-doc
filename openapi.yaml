@@ -73,5 +73,5 @@ paths:
   "/transactions/list":
     $ref: paths/transactions_list.yaml
 
-  "/webhook/update":
-    $ref: paths/webhook_update.yaml
+  "/vasps/webhook":
+    $ref: paths/vasps_webhook.yaml
