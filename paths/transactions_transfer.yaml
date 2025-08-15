@@ -1,0 +1,41 @@
+post:
+  tags:
+    - Offramp Transaction Endpoints
+  operationId: transferTransaction
+  summary: Transfer Transaction
+  description: Transfer transaction by its ID.
+  parameters:
+    - $ref: ../components/parameters/PayloadHeader.yaml
+    - $ref: ../components/parameters/SignatureHeader.yaml
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            id:
+              type: string
+              $ref: ../components/schemas/TransactionId.yaml
+  responses:
+    "200":
+      description: Success
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: ../components/schemas/Response.yaml
+              - type: object
+                properties:
+                  data:
+                    oneOf:
+                      - allOf:
+                          - $ref: ../components/schemas/Transaction.yaml
+                          - example:
+                              status: "PENDING_TRANSFER"
+    "400":
+      description: Bad Request
+      $ref: ../components/responses/Problem.yaml
+    "403":
+      description: Forbidden
+      $ref: ../components/responses/Problem.yaml

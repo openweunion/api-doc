@@ -22,6 +22,7 @@ properties:
       - "APPROVED"
       - "ACCEPTED"
       - "REJECTED"
+      - "PENDING_TRANSFER"
       - "TRANSFERRED"
       - "COMPLETED"
   transactionHash:

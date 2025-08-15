@@ -66,6 +66,8 @@ paths:
     $ref: paths/transactions_accept.yaml
   "/transactions/reject":
     $ref: paths/transactions_reject.yaml
+  "/transactions/transfer":
+    $ref: paths/transactions_transfer.yaml
   "/transactions/complete":
     $ref: paths/transactions_complete.yaml
   "/transactions/{id}":
