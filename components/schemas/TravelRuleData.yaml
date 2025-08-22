@@ -1,8 +1,16 @@
 type: object
 required:
+  - originatorVASPId
+  - beneficiaryVASPId
   - originator
   - beneficiary
 properties:
+  originatorVASPId:
+    description: "The VASP ID of the originator."
+    $ref: ./VASPId.yaml
+  beneficiaryVASPId:
+    description: "The VASP ID of the beneficiary."
+    $ref: ./VASPId.yaml
   originator:
     description: "Details of the originator involved in the transaction."
     $ref: ./Originator.yaml
