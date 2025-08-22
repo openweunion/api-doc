@@ -1,14 +1,14 @@
 type: object
 properties:
   id:
-    $ref: QuoteID.yaml
+    $ref: ./QuoteId.yaml
   sourceVASPId:
     type: string
     $ref: ./VASPId.yaml
   paymentCompany:
     description: "The payment company connected to the VASP."
     type: string
-    example: "HashKey"
+    example: "EX.IO"
   fromAmount:
     description: "The amount being sent from the sender's account."
     type: string

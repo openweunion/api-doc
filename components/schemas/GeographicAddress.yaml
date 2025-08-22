@@ -1,0 +1,82 @@
+type: object
+description: "The particulars of a location at which a person may be communicated with."
+properties:
+  addressType:
+    type: string
+    description: |
+      Identifies the nature of the address. Valid values:
+        - HOME: Residential address
+        - BIZZ: Business address
+        - GEOG: Geographic address suitable for identification
+    enum:
+      - HOME
+      - BIZZ
+      - GEOG
+    example: "HOME"
+  department:
+    type: string
+    description: "Department within the organization, if applicable."
+    example: "Customer Support"
+  subDepartment:
+    type: string
+    description: "Sub-department within the organization."
+    example: "Billing"
+  streetName:
+    type: string
+    description: "Street name."
+    example: "Main Street"
+  buildingNumber:
+    type: string
+    description: "Building number."
+    example: "123"
+  buildingName:
+    type: string
+    description: "Building name."
+    example: "Sunrise Tower"
+  floor:
+    type: string
+    description: "Floor number or designation."
+    example: "5"
+  postBox:
+    type: string
+    description: "Post box number."
+    example: "PO Box 456"
+  room:
+    type: string
+    description: "Room or suite number."
+    example: "501"
+  postCode:
+    type: string
+    description: "Postal code."
+    example: "10001"
+  townName:
+    type: string
+    description: "Town or city name."
+    example: "New York"
+  townLocationName:
+    type: string
+    description: "Additional town location information."
+    example: "Manhattan"
+  districtName:
+    type: string
+    description: "District or borough name."
+    example: "New York County"
+  countrySubDivision:
+    type: string
+    description: "State, province, or region."
+    example: "NY"
+  addressLine:
+    type: array
+    description: "Free-format address lines as defined by postal services."
+    items:
+      type: string
+    example:
+      - "123 Main Street, Sunrise Tower"
+      - "Floor 5, Room 501"
+  country:
+    type: string
+    description: "Two alphabetic characters representing an ISO-3166 Alpha-2 country, or 'XX' for unknown."
+    example: "US"
+
+xml:
+  name: GeographicAddress

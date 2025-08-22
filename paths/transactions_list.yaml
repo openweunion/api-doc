@@ -13,6 +13,9 @@ post:
       application/json:
         schema:
           type: object
+          required:
+            - page
+            - pageSize
           properties:
             page:
               type: number
@@ -22,6 +25,10 @@ post:
               type: number
               description: "The number of items per page."
               example: 10
+            originatorCustomerId:
+              type: string
+              description: "Filter by originator customer ID."
+
   responses:
     "200":
       description: Success

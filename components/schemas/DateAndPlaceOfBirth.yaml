@@ -1,0 +1,19 @@
+type: object
+description: "Date and place of birth details of a natural person."
+properties:
+  dateOfBirth:
+    type: string
+    format: date
+    description: "Date of birth in ISO 8601 format."
+    example: "1990-05-15"
+  placeOfBirth:
+    type: string
+    description: "City or place of birth."
+    example: "New York"
+  countryOfResidence:
+    type: string
+    description: "Country of residence (ISO 3166-1 alpha-2), or 'XX' if unknown."
+    example: "US"
+
+xml:
+  name: DateAndPlaceOfBirth

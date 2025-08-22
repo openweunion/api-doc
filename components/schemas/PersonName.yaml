@@ -1,4 +1,6 @@
 type: object
+required:
+  - nameIdentifier
 properties:
   nameIdentifier:
     description: "Name identifier for the person."

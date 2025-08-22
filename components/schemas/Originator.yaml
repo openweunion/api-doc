@@ -1,11 +1,16 @@
 type: object
+required:
+  - originatorPerson
+  - accountNumber
 properties:
   originatorPerson:
-    description: "Originator person details."
-    $ref: ./Person.yaml
+    type: array
+    items:
+      $ref: ./Person.yaml
   accountNumber:
-    description: "Wallet address on Ethereum or Bitcoin, or account number of originator person."
-    type: string
-    example: "0x742d35Cc6634C0532925a3b844Bc454e4438f44e"
+    type: array
+    items:
+      type: string
+      example: "0x742d35Cc6634C0532925a3b844Bc454e4438f44e"
 xml:
   name: Originator

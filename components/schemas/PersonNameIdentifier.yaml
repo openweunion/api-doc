@@ -1,4 +1,7 @@
 type: object
+required:
+  - primaryIdentifier
+  - secondaryIdentifier
 properties:
   primaryIdentifier:
     description: "Primary identifier for the person name."

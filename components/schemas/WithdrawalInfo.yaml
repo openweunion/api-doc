@@ -1,4 +1,9 @@
 type: object
+required:
+  - accNo
+  - ccy
+  - qty
+  - remitChannel
 properties:
   accNo:
     description: "Account Number (for fiat only)"
@@ -7,7 +12,7 @@ properties:
   bankCode:
     description: "Bank Code (for fiat only; mandatory if swift code is not available)"
     type: string
-    example: "BANK123"
+    example: "001"
   ccy:
     description: "Currency (for fiat only)"
     type: string
@@ -23,6 +28,6 @@ properties:
   swiftCode:
     description: "SWIFT Code (for fiat only; mandatory if bank code is not available)"
     type: string
-    example: "SWIFT123"
+    example: "HSBCHKHHXXX"
 xml:
   name: WithdrawalInfo

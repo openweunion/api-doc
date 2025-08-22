@@ -36,10 +36,14 @@ Outlines the lifecycle of a transaction between the **Originator VASP** and the 
    - Status: `REJECTED`
    - Rejected by **Beneficiary VASP**
 
-6. **Update Transaction Hash**
+6. **Transfer Transaction**
+   - Status: `PENDING TRANSFER`
+   - On-chain transfer initiated by **Originator VASP**
+
+7. **Update Transaction Hash**
    - Status: `TRANSFERRED`
    - Transaction hash submitted by **Originator VASP**
 
-7. **Complete Transaction**
+8. **Complete Transaction**
    - Status: `COMPLETED`
    - Finalized by **Beneficiary VASP**

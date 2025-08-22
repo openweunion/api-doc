@@ -13,10 +13,25 @@ post:
       application/json:
         schema:
           type: object
+          required:
+            - originatorVASPId
+            - beneficiaryVASPId
+            - originatorCustomerId
+            - quoteId
+            - withdrawalInfo
           properties:
+            originatorVASPId:
+              type: string
+              $ref: ../components/schemas/VASPId.yaml
+            beneficiaryVASPId:
+              type: string
+              $ref: ../components/schemas/VASPId.yaml
+            originatorCustomerId:
+              type: string
+              $ref: ../components/schemas/CustomerId.yaml
             quoteId:
               type: string
-              $ref: ../components/schemas/QuoteID.yaml
+              $ref: ../components/schemas/QuoteId.yaml
             travelRuleData:
               type: object
               $ref: ../components/schemas/TravelRuleData.yaml
@@ -59,6 +74,9 @@ put:
       application/json:
         schema:
           type: object
+          required:
+            - id
+            - transactionHash
           properties:
             id:
               type: string

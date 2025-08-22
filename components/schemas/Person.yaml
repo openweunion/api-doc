@@ -1,13 +1,28 @@
 type: object
+required:
+  - naturalPerson
 properties:
   naturalPerson:
     description: "Natural person details."
     type: object
+    required:
+      - name
     properties:
       name:
         description: "Full name of the persons."
         type: array
         items:
           $ref: ./PersonName.yaml
+      geographicAddress:
+        description: "List of geographic addresses for the natural person."
+        type: array
+        items:
+          $ref: ./GeographicAddress.yaml
+      nationalIdentification:
+        description: "National identification details for the person."
+        $ref: ./NationalIdentification.yaml
+      dateAndPlaceOfBirth:
+        description: "Date and place of birth details."
+        $ref: ./DateAndPlaceOfBirth.yaml
 xml:
   name: Person

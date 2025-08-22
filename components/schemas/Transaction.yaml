@@ -2,9 +2,16 @@ type: object
 properties:
   id:
     $ref: ./TransactionId.yaml
+  originatorVASPId:
+    $ref: ./VASPId.yaml
+  beneficiaryVASPId:
+    $ref: ./VASPId.yaml
+  originatorCustomerId:
+    type: string
+    $ref: ./CustomerId.yaml
   quoteId:
     type: string
-    $ref: ./QuoteID.yaml
+    $ref: ./QuoteId.yaml
   travelRuleData:
     description: "Travel Rule data for the transaction."
     type: object

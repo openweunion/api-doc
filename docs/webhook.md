@@ -9,11 +9,11 @@ To receive asynchronous status updates, VASPs must provide a valid API endpoint 
 
 Each webhook request includes the following fields:
 
-| Field     | Type   | Description                                                                       |
-| --------- | ------ | --------------------------------------------------------------------------------- |
-| `message` | string | Type of notification (e.g., `transactionUpdated`) to identify the update context. |
-| `payload` | object | Notification details.                                                             |
-| `version` | string | Request Structure format version (e.g., `"1.0.0"`).                               |
+| <div style="width: 68px">Field</div> | Type   | Description                                                                       |
+| ------------------------------------ | ------ | --------------------------------------------------------------------------------- |
+| `message`                            | string | Type of notification (e.g., `transactionUpdated`) to identify the update context. |
+| `payload`                            | object | Notification details.                                                             |
+| `version`                            | string | Request Structure format version (e.g., `"1.0.0"`).                               |
 
 #### Sample Request
 

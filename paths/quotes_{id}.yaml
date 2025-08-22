@@ -12,7 +12,7 @@ get:
       required: true
       schema:
         type: string
-        $ref: ../components/schemas/QuoteID.yaml
+        $ref: ../components/schemas/QuoteId.yaml
   responses:
     "200":
       description: Success

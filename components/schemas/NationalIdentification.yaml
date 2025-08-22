@@ -1,0 +1,48 @@
+type: object
+description: "National identification details of a natural or legal person."
+required:
+  - nationalIdentifier
+  - nationalIdentifierType
+  - countryOfIssue
+properties:
+  nationalIdentifier:
+    type: string
+    description: "A character string representing the identifier assigned by the issuing authority."
+    example: "A123456789"
+  nationalIdentifierType:
+    type: string
+    description: |
+      Identifies the national identification type. Valid values are:
+        - ARNU: Alien registration number
+        - CCPT: Passport number
+        - RAID: Registration authority identifier
+        - DRLC: Driver license number
+        - FIIN: Foreign investment identity number
+        - TXID: Tax identification number
+        - SOCS: Social security number
+        - IDCD: Identity card number
+        - LEIX: Legal Entity Identifier (LEI)
+        - MISC: Unspecified
+    enum:
+      - ARNU
+      - CCPT
+      - RAID
+      - DRLC
+      - FIIN
+      - TXID
+      - SOCS
+      - IDCD
+      - LEIX
+      - MISC
+    example: "CCPT"
+  countryOfIssue:
+    type: string
+    description: "Two alphabetic characters representing an ISO-3166 Alpha-2 country, or 'XX' for unknown."
+    example: "US"
+  registrationAuthority:
+    type: string
+    description: "Identifier of the authority that issued or maintains this identifier. Optional."
+    example: "US-PASSPORT-2025"
+
+xml:
+  name: NationalIdentification

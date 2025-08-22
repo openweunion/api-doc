@@ -13,11 +13,12 @@ post:
       application/json:
         schema:
           type: object
+          required:
+            - fromCurrency
+            - toCurrency
+            - fromAmount
+            - chain
           properties:
-            sourceVASPId:
-              description: "The ID of the source VASP."
-              type: string
-              $ref: ../components/schemas/VASPId.yaml
             fromCurrency:
               description: "The currency of the amount being sold."
               type: string

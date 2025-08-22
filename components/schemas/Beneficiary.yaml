@@ -1,11 +1,16 @@
 type: object
+required:
+  - beneficiaryPerson
+  - accountNumber
 properties:
   beneficiaryPerson:
-    description: "Beneficiary person details."
-    $ref: ./Person.yaml
+    type: array
+    items:
+      $ref: ./Person.yaml
   accountNumber:
-    description: "Wallet address on Ethereum or Bitcoin, or account number of beneficiary person."
-    type: string
-    example: "0xd9bf52aEf73A9e97E94b64eF6993A1D8db63a559"
+    type: array
+    items:
+      type: string
+      example: "0x742d35Cc6634C0532925a3b844Bc454e4438f44e"
 xml:
   name: Beneficiary

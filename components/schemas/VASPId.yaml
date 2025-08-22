@@ -1,4 +1,3 @@
 type: string
 format: uuid
 description: "The unique identifier for the VASP."
-example: 89e7b5d7-80f0-496f-a2f4-b82421cf7fc6
