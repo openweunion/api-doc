@@ -8,7 +8,7 @@ info:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
 servers:
-  - url: https://dev.weunion/api/v1
+  - url: http://weunion.eight-art.com/v1/offramp
 
 tags:
   - name: Overview
