@@ -53,7 +53,10 @@ post:
                               $ref: ../components/schemas/Transaction.yaml
     "400":
       description: Bad Request
-      $ref: ../components/responses/Problem.yaml
-    "403":
-      description: Forbidden
-      $ref: ../components/responses/Problem.yaml
+      $ref: ../components/responses/Problem-400.yaml
+    "401":
+      description: Unauthorized
+      $ref: ../components/responses/Problem-401.yaml
+    "500":
+      description: Internal Server Error
+      $ref: ../components/responses/Problem-500.yaml

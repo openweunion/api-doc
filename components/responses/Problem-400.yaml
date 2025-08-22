@@ -1,0 +1,10 @@
+description: Problem
+content:
+  application/problem+json:
+    schema:
+      $ref: ../schemas/Problem.yaml
+    example:
+      type: "urn:example:errors:bad-request"
+      title: "Bad Request"
+      status: 400
+      detail: "The request could not be understood or was missing required parameters."

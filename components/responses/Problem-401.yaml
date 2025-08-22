@@ -1,0 +1,10 @@
+description: Problem
+content:
+  application/problem+json:
+    schema:
+      $ref: ../schemas/Problem.yaml
+    example:
+      type: "urn:example:errors:unauthorized"
+      title: "Unauthorized"
+      status: 401
+      detail: "Authentication failed. Missing or invalid access token."

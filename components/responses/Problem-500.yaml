@@ -1,0 +1,10 @@
+description: Problem
+content:
+  application/problem+json:
+    schema:
+      $ref: ../schemas/Problem.yaml
+    example:
+      type: "urn:example:errors:internal-server-error"
+      title: "Internal Server Error"
+      status: 500
+      detail: "An unexpected error occurred. Please try again later."
