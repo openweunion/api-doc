@@ -3,7 +3,7 @@ post:
     - Offramp Transaction Endpoints
   operationId: completeTransaction
   summary: Complete Transaction
-  description: Complete transaction by its ID.
+  description: Complete transaction by its ID and referenceId.
   parameters:
     - $ref: ../components/parameters/PayloadHeader.yaml
     - $ref: ../components/parameters/SignatureHeader.yaml
@@ -15,10 +15,15 @@ post:
           type: object
           required:
             - id
+            - referenceId
           properties:
             id:
               type: string
               $ref: ../components/schemas/TransactionId.yaml
+            referenceId:
+              type: string
+              description: "Bank or payment provider reference ID for withdrawal."
+              example: "BANK-TRX-20250827-001"
   responses:
     "200":
       description: Success
@@ -35,6 +40,7 @@ post:
                           - $ref: ../components/schemas/Transaction.yaml
                           - example:
                               status: "COMPLETED"
+                              referenceId: "BANK-TRX-20250827-001"
                               transactionHash: "0x1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef"
     "400":
       description: Bad Request

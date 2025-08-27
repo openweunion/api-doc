@@ -32,6 +32,10 @@ properties:
       - "PENDING_TRANSFER"
       - "TRANSFERRED"
       - "COMPLETED"
+  referenceId:
+    description: "Bank or payment provider reference ID for withdrawal."
+    type: [string, "null"]
+    example: null
   transactionHash:
     description: "The hash of the transaction."
     type: [string, "null"]
