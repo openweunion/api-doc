@@ -35,6 +35,10 @@ tags:
     description:
       $ref: "docs/webhook.md"
 
+  - name: BFI Quote Endpoints
+    description:
+      $ref: "docs/bfi_quote.md"
+
 components:
   securitySchemes:
     ApiKeyAuth:
@@ -77,3 +81,6 @@ paths:
 
   "/vasps/webhook":
     $ref: paths/vasps_webhook.yaml
+
+  "/vasps/quote":
+    $ref: paths/vasps_quote.yaml

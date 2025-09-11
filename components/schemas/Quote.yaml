@@ -16,7 +16,7 @@ properties:
   toAmount:
     description: "The amount being received by the recipient's account."
     type: string
-    example: "100.00"
+    example: "778.00"
   fromCurrency:
     description: "The currency of the amount being sent."
     type: string
