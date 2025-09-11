@@ -1,19 +1,24 @@
 
 # Webhook Usage
 
-### Webhook Setup
+### Setup
 
-To receive asynchronous status updates, VASPs must provide a valid API endpoint for webhook notifications.
+To receive asynchronous status updates, **VASPs** must provide a valid API endpoint for webhook notifications.  
 
-#### Webhook Request Structure
+### Description
 
-Each webhook request includes the following fields:
+This API allows **VASPs** to send real-time updates to VASPs about transaction status changes.
+Whenever a relevant event occurs (e.g., a transaction is created, cancelled, accepted, approved, rejected, transfer, updated, or completed), the webhook will push the notification to the provided endpoint.
 
-| <div style="width: 68px">Field</div> | Type   | Description                                                                       |
-| ------------------------------------ | ------ | --------------------------------------------------------------------------------- |
-| `message`                            | string | Type of notification (e.g., `transactionUpdated`) to identify the update context. |
-| `payload`                            | object | Notification details.                                                             |
-| `version`                            | string | Request Structure format version (e.g., `"1.0.0"`).                               |
+---
+
+### Request Body
+
+| Field     | Type   | Description                                                                       |
+| --------- | ------ | --------------------------------------------------------------------------------- |
+| `message` | string | Type of notification (e.g., `transactionUpdated`) to identify the update context. |
+| `payload` | object | Notification details.                                                             |
+| `version` | string | Request Structure format version (e.g., `"1.0.0"`).                               |
 
 #### Sample Request
 
