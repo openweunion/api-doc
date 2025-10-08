@@ -16,7 +16,7 @@ Outlines the lifecycle of a transaction between the **Originator VASP** and the 
 
 ### Flow Breakdown
 
-1. **Create Transaction** (`create tx`)
+1. **Create Transaction**
    - Status: `NEW`
    - Initiated by **Originator VASP**
 
