@@ -15,6 +15,7 @@ WeUnion will query multiple **BFIs**, aggregate their quotes, and return the res
 
 | Field          | Type   | Description                                                    |
 | -------------- | ------ | -------------------------------------------------------------- |
+| `fromAmount`   | string | The amount being sold in the fromCurrency.                     |
 | `fromCurrency` | string | The source currency to convert from (e.g., `USDC`).            |
 | `toCurrency`   | string | The target currency to convert to (e.g., `HKD`).               |
 | `chain`        | string | Blockchain identifier (e.g., `eip155:1` for Ethereum Mainnet). |
@@ -22,6 +23,7 @@ WeUnion will query multiple **BFIs**, aggregate their quotes, and return the res
 #### Sample Request
 ```javascript
 {
+  "fromAmount": "100",
   "fromCurrency": "USDC",
   "toCurrency": "HKD",
   "chain": "eip155:1"
@@ -46,6 +48,7 @@ WeUnion will query multiple **BFIs**, aggregate their quotes, and return the res
 | `message`             | string | Status message (`success`).                   |
 | `code`                | number | Status code (`0` for success).                |
 | `data.paymentCompany` | string | Settlement/payment company name.              |
+| `data.fromAmount`     | string | From amount being sold.                       |
 | `data.fromCurrency`   | string | Source currency (e.g., `USDC`).               |
 | `data.toCurrency`     | string | Target currency (e.g., `HKD`).                |
 | `data.chain`          | string | Blockchain identifier.                        |
@@ -63,6 +66,7 @@ WeUnion will query multiple **BFIs**, aggregate their quotes, and return the res
   "code": 0,
   "data": {
     "paymentCompany": "BFI Company",
+    "fromAmount": "100",
     "fromCurrency": "USDC",
     "toCurrency": "HKD",
     "chain": "eip155:1",
@@ -71,7 +75,7 @@ WeUnion will query multiple **BFIs**, aggregate their quotes, and return the res
     "fee": {
       "type": "fiat",
       "currency": "HKD",
-      "amount": "1.00"
+      "amount": "15.00"
     }
   }
 }
