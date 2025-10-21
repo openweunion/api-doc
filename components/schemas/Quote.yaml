@@ -2,6 +2,10 @@ type: object
 properties:
   id:
     $ref: ./QuoteId.yaml
+  sourceId:
+    description: "The identifier for the source of the quote."
+    type: string
+    example: "ae0a740d-dca9-418b-9c86-dd15ded959c4"
   sourceVASPId:
     type: string
     $ref: ./VASPId.yaml

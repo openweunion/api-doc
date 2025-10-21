@@ -43,21 +43,21 @@ WeUnion will query multiple **BFIs**, aggregate their quotes, and return the res
 
 #### Success Response
 
-| Field                 | Type   | Description                                   |
-| --------------------- | ------ | --------------------------------------------- |
-| `message`             | string | Status message (`success`).                   |
-| `code`                | number | Status code (`0` for success).                |
-| `data.paymentCompany` | string | Settlement/payment company name.              |
-| `data.fromAmount`     | string | From amount being sold.                       |
-| `data.fromCurrency`   | string | Source currency (e.g., `USDC`).               |
-| `data.toCurrency`     | string | Target currency (e.g., `HKD`).                |
-| `data.chain`          | string | Blockchain identifier.                        |
-| `data.rate`           | string | Conversion rate applied.                      |
-| `data.expiredTime`    | string | Quote expiration timestamp (ISO 8601 format). |
-| `data.fee`            | object | Fee breakdown.                                |
-| `data.fee.type`       | string | Fee type (e.g., `fiat`).                      |
-| `data.fee.currency`   | string | Fee currency (e.g., `HKD`).                   |
-| `data.fee.amount`     | string | Total fee amount.                             |
+| Field               | Type   | Description                                   |
+| ------------------- | ------ | --------------------------------------------- |
+| `message`           | string | Status message (`success`).                   |
+| `code`              | number | Status code (`0` for success).                |
+| `data.id`           | string | Unique identifier for the quote.              |
+| `data.fromAmount`   | string | From amount being sold.                       |
+| `data.fromCurrency` | string | Source currency (e.g., `USDC`).               |
+| `data.toCurrency`   | string | Target currency (e.g., `HKD`).                |
+| `data.chain`        | string | Blockchain identifier.                        |
+| `data.rate`         | string | Conversion rate applied.                      |
+| `data.expiredTime`  | string | Quote expiration timestamp (ISO 8601 format). |
+| `data.fee`          | object | Fee breakdown.                                |
+| `data.fee.type`     | string | Fee type (e.g., `fiat`).                      |
+| `data.fee.currency` | string | Fee currency (e.g., `HKD`).                   |
+| `data.fee.amount`   | string | Total fee amount.                             |
 
 #### Sample Response
 ```javascript
@@ -65,7 +65,7 @@ WeUnion will query multiple **BFIs**, aggregate their quotes, and return the res
   "message": "success",
   "code": 0,
   "data": {
-    "paymentCompany": "BFI Company",
+    "id": "ae0a740d-dca9-418b-9c86-dd15ded959c4",
     "fromAmount": "100",
     "fromCurrency": "USDC",
     "toCurrency": "HKD",
