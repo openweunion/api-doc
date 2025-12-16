@@ -5818,6 +5818,22 @@ WeUnion will query multiple <strong>BFIs</strong>, aggregate their quotes, and r
       Redoc.hydrate(__redoc_state, container);
 
       </script>
-<script src="mermaid-loader.js"></script></body>
+</body>
 
 </html>
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>
+(function() {
+  mermaid.initialize({ startOnLoad: false });
+  setTimeout(function() {
+    document.querySelectorAll('code.language-mermaid').forEach(function(el) {
+      var pre = el.parentElement;
+      var div = document.createElement('div');
+      div.className = 'mermaid';
+      div.textContent = el.textContent;
+      pre.parentElement.replaceChild(div, pre);
+    });
+    mermaid.init(undefined, '.mermaid');
+  }, 1000);
+})();
+</script>
