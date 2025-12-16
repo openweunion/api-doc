@@ -78,7 +78,7 @@ POST /quotes/list
   "message": "success",
   "data": [
     {
-      "id": "quote-uuid-1234",
+      "id": "123e4567-e89b-12d3-a456-426614174000",
       "fromAmount": "100",
       "fromCurrency": "USDC",
       "toCurrency": "HKD",
@@ -107,10 +107,10 @@ POST /transactions
 **Request Body:**
 ```json
 {
-  "originatorVASPId": "your-vasp-id",
-  "beneficiaryVASPId": "bfi-vasp-id",
-  "originatorCustomerId": "customer-123",
-  "quoteId": "quote-uuid-1234",
+  "originatorVASPId": "550e8400-e29b-41d4-a716-446655440000",
+  "beneficiaryVASPId": "6ba7b810-9dad-11d1-80b4-00c04fd430c8",
+  "originatorCustomerId": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+  "quoteId": "123e4567-e89b-12d3-a456-426614174000",
   "withdrawalInfo": {
     "bankName": "HSBC",
     "bankCode": "004",
@@ -136,10 +136,10 @@ POST /transactions
   "code": 0,
   "message": "success",
   "data": {
-    "id": "tx-uuid-5678",
+    "id": "8cdd5b98-86d3-4921-8bb3-a2920f9bb350",
     "status": "NEW",
-    "originatorVASPId": "your-vasp-id",
-    "beneficiaryVASPId": "bfi-vasp-id",
+    "originatorVASPId": "550e8400-e29b-41d4-a716-446655440000",
+    "beneficiaryVASPId": "6ba7b810-9dad-11d1-80b4-00c04fd430c8",
     "createdTime": "2025-08-07T09:00:00Z"
   }
 }
@@ -158,7 +158,7 @@ POST /transactions/approve
 **Request Body:**
 ```json
 {
-  "id": "tx-uuid-5678"
+  "id": "8cdd5b98-86d3-4921-8bb3-a2920f9bb350"
 }
 ```
 
@@ -177,7 +177,7 @@ POST /transactions/accept
 **Request Body:**
 ```json
 {
-  "id": "tx-uuid-5678"
+  "id": "8cdd5b98-86d3-4921-8bb3-a2920f9bb350"
 }
 ```
 
@@ -196,7 +196,7 @@ POST /transactions/transfer
 **Request Body:**
 ```json
 {
-  "id": "tx-uuid-5678"
+  "id": "8cdd5b98-86d3-4921-8bb3-a2920f9bb350"
 }
 ```
 
@@ -221,7 +221,7 @@ PUT /transactions
 **Request Body:**
 ```json
 {
-  "id": "tx-uuid-5678",
+  "id": "8cdd5b98-86d3-4921-8bb3-a2920f9bb350",
   "transactionHash": "0x1234567890abcdef..."
 }
 ```
@@ -241,7 +241,7 @@ POST /transactions/complete
 **Request Body:**
 ```json
 {
-  "id": "tx-uuid-5678",
+  "id": "8cdd5b98-86d3-4921-8bb3-a2920f9bb350",
   "referenceId": "bank-ref-12345"
 }
 ```
