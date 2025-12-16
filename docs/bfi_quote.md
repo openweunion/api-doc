@@ -2,12 +2,14 @@
 
 ### Setup
 
-To enable real-time off-ramp quotes, each **BFI VASP** must provide a valid API endpoint.  
+To enable real-time off-ramp quotes, each **BFI VASP** must provide a valid API endpoint.
 
 ### Description
 
 This API returns a real-time off-ramp quote from a BFI.
 WeUnion will query multiple **BFIs**, aggregate their quotes, and return the result to the **OFI**.
+
+> **Note:** See the `BFIQuoteRequest` and `BFIQuoteResponse` schemas for the complete structure definitions.
 
 ---
 
@@ -21,7 +23,7 @@ WeUnion will query multiple **BFIs**, aggregate their quotes, and return the res
 | `chain`        | string | Blockchain identifier (e.g., `eip155:1` for Ethereum Mainnet). |
 
 #### Sample Request
-```javascript
+```json
 {
   "fromAmount": "100",
   "fromCurrency": "USDC",
@@ -60,7 +62,7 @@ WeUnion will query multiple **BFIs**, aggregate their quotes, and return the res
 | `data.fee.amount`   | string | Total fee amount.                             |
 
 #### Sample Response
-```javascript
+```json
 {
   "message": "success",
   "code": 0,
@@ -95,9 +97,15 @@ WeUnion will query multiple **BFIs**, aggregate their quotes, and return the res
 - Unsupported **currency pair** (e.g., `USDC` → `HKD`)  
 
 #### Sample Response
-```javascript
+```json
 {
   "message": "unsupported",
   "code": -1
 }
 ```
+
+---
+
+### Authentication
+
+For request authentication and signature verification, see the [Authentication](./authentication.md) documentation.

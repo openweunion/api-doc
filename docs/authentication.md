@@ -8,6 +8,14 @@ To authenticate every request, include the following headers:
 
 > ⚠️ These headers must be present in **every request**.
 
+### Timestamp Validation
+
+The `timestamp` in the payload must be within **5 minutes** of the server time to prevent replay attacks. Requests with expired timestamps will be rejected with a `401 Unauthorized` error.
+
+**Important:**
+- Use Unix timestamp in **milliseconds** (e.g., `1723012800000`)
+- Ensure your server clock is synchronized (NTP recommended)
+
 #### Sample Headers
 
 ```javascript

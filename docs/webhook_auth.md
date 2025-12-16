@@ -17,12 +17,12 @@ Each webhook request includes the following fields:
 
 #### Sample Request
 
-```javascript
+```json
 {
   "message": "transactionUpdated",
   "payload": {
     "transaction": {
-      "id": "8cdd5b98-86d3-4921-8bb3-a2920f9bb350"
+      "id": "8cdd5b98-86d3-4921-8bb3-a2920f9bb350",
       "status": "APPROVED",
       "createdTime": "2025-08-07T09:00:00Z",
       "updatedTime": "2025-08-07T10:30:00Z"
