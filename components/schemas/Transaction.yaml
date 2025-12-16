@@ -1,27 +1,45 @@
 type: object
+description: "Represents an offramp transaction for converting digital assets to fiat currency."
 properties:
   id:
+    description: "Unique identifier of this transaction."
     $ref: ./TransactionId.yaml
   originatorVASPId:
+    description: "The VASP ID that initiated this transaction."
     $ref: ./VASPId.yaml
   beneficiaryVASPId:
+    description: "The VASP ID responsible for processing the fiat withdrawal."
     $ref: ./VASPId.yaml
   originatorCustomerId:
+    description: "The customer ID of the user who initiated the transaction."
     type: string
     $ref: ./CustomerId.yaml
   quoteId:
+    description: "The quote ID used for this transaction's exchange rate."
     type: string
     $ref: ./QuoteId.yaml
   travelRuleData:
-    description: "Travel Rule data for the transaction."
+    description: "Travel Rule compliance data containing originator and beneficiary information."
     type: object
     $ref: ./TravelRuleData.yaml
   withdrawalInfo:
-    description: "Withdrawal information for the transaction."
+    description: "Bank account details for the fiat withdrawal."
     type: object
     $ref: ./WithdrawalInfo.yaml
   status:
-    description: "Status of the transaction."
+    description: |
+      Current status of the transaction. The status follows a specific lifecycle:
+
+      | Status | Description | Next Possible Status | Actor |
+      |--------|-------------|---------------------|-------|
+      | `NEW` | Transaction created, pending approval | `APPROVED`, `CANCELLED` | Originator VASP |
+      | `APPROVED` | Approved by Originator VASP, waiting for Beneficiary | `ACCEPTED`, `REJECTED`, `CANCELLED` | Beneficiary VASP |
+      | `ACCEPTED` | Accepted by Beneficiary VASP, ready for transfer | `PENDING_TRANSFER`, `CANCELLED` | Originator VASP |
+      | `REJECTED` | Rejected by Beneficiary VASP (terminal state) | - | - |
+      | `PENDING_TRANSFER` | On-chain transfer initiated | `TRANSFERRED` | Originator VASP |
+      | `TRANSFERRED` | On-chain transfer confirmed, hash submitted | `COMPLETED` | Beneficiary VASP |
+      | `COMPLETED` | Fiat withdrawal completed (terminal state) | - | - |
+      | `CANCELLED` | Cancelled by Originator VASP (terminal state) | - | - |
     type: string
     enum:
       - "NEW"
@@ -37,8 +55,9 @@ properties:
     type: [string, "null"]
     example: null
   transactionHash:
-    description: "The hash of the transaction."
+    description: "The on-chain transaction hash after the blockchain transfer is executed."
     type: [string, "null"]
+    pattern: "^0x[a-fA-F0-9]{64}$"
     example: null
   createdTime:
     description: "The time when the transaction was created (ISO 8601 format)."

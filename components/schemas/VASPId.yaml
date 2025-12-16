@@ -1,3 +1,5 @@
 type: string
 format: uuid
-description: "The unique identifier for the VASP."
+description: "The unique identifier for the VASP (UUID v4 format)."
+pattern: "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$"
+example: "550e8400-e29b-41d4-a716-446655440000"

@@ -1,20 +1,38 @@
 type: object
+description: "Fee breakdown for the offramp transaction."
+required:
+  - type
+  - currency
+  - offrampFee
+  - gatewayFee
 properties:
   type:
-    description: "Type of the fee."
+    description: "Type of currency for the fee calculation."
     type: string
+    enum:
+      - fiat
+      - crypto
+    example: "fiat"
   currency:
-    description: "Currency of the fee."
+    description: "ISO 4217 currency code for the fee (e.g., HKD, USD)."
     type: string
+    pattern: "^[A-Z]{3}$"
+    example: "HKD"
   offrampFee:
-    description: "Offramp fee amount.."
+    description: "Fee charged by the offramp service provider."
     type: string
+    pattern: "^\\d+(\\.\\d{1,2})?$"
+    example: "1.00"
   gatewayFee:
-    description: "Gateway fee amount."
+    description: "Fee charged by the payment gateway for processing."
     type: string
+    pattern: "^\\d+(\\.\\d{1,2})?$"
+    example: "1.00"
   tdsFee:
-    description: "TDS (Tax deductible at Source), in compliance with the regulatory framework set by the regional authority."
+    description: "Tax Deducted at Source (TDS) fee, in compliance with regional tax regulations. May be 0.00 if not applicable."
     type: string
+    pattern: "^\\d+(\\.\\d{1,2})?$"
+    example: "0.00"
 example:
   type: "fiat"
   currency: "HKD"

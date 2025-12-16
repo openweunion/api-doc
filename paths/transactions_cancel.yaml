@@ -3,7 +3,18 @@ post:
     - Offramp Transaction Endpoints
   operationId: cancelTransaction
   summary: Cancel Transaction
-  description: Cancel transaction by its ID.
+  description: |
+    Cancel a transaction by the Originator VASP.
+
+    **Preconditions:**
+    - Transaction status must be one of: `NEW`, `APPROVED`, or `ACCEPTED`
+    - Only the Originator VASP has permission to cancel the transaction
+
+    **Result:**
+    - Transaction status changes to `CANCELLED`
+    - If a Beneficiary VASP is involved, they will receive a webhook notification
+
+    **Note:** Transactions in `PENDING_TRANSFER`, `TRANSFERRED`, or `COMPLETED` status cannot be cancelled.
   parameters:
     - $ref: ../components/parameters/PayloadHeader.yaml
     - $ref: ../components/parameters/SignatureHeader.yaml
@@ -21,7 +32,7 @@ post:
               $ref: ../components/schemas/TransactionId.yaml
   responses:
     "200":
-      description: Success
+      description: Transaction cancelled successfully
       content:
         application/json:
           schema:
@@ -41,6 +52,15 @@ post:
     "401":
       description: Unauthorized
       $ref: ../components/responses/Problem-401.yaml
+    "403":
+      description: Forbidden - Only Originator VASP can cancel the transaction
+      $ref: ../components/responses/Problem-403.yaml
+    "404":
+      description: Not Found - Transaction does not exist
+      $ref: ../components/responses/Problem-404.yaml
+    "409":
+      description: Conflict - Transaction status does not allow cancellation (e.g., already COMPLETED or TRANSFERRED)
+      $ref: ../components/responses/Problem-409.yaml
     "500":
       description: Internal Server Error
       $ref: ../components/responses/Problem-500.yaml

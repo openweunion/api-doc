@@ -3,7 +3,19 @@ post:
     - Offramp Transaction Endpoints
   operationId: acceptTransaction
   summary: Accept Transaction
-  description: Accept transaction by its ID.
+  description: |
+    Accept a transaction by the Beneficiary VASP.
+
+    **Preconditions:**
+    - Transaction status must be: `APPROVED`
+    - Only the Beneficiary VASP has permission to accept the transaction
+
+    **Result:**
+    - Transaction status changes to `ACCEPTED`
+    - The Originator VASP will receive a webhook notification
+    - The Originator VASP can then proceed to initiate the on-chain transfer
+
+    **Flow:** This is called by the Beneficiary VASP after reviewing and accepting the transaction request from the Originator VASP.
   parameters:
     - $ref: ../components/parameters/PayloadHeader.yaml
     - $ref: ../components/parameters/SignatureHeader.yaml
@@ -21,7 +33,7 @@ post:
               $ref: ../components/schemas/TransactionId.yaml
   responses:
     "200":
-      description: Success
+      description: Transaction accepted successfully
       content:
         application/json:
           schema:
@@ -41,6 +53,15 @@ post:
     "401":
       description: Unauthorized
       $ref: ../components/responses/Problem-401.yaml
+    "403":
+      description: Forbidden - Only Beneficiary VASP can accept the transaction
+      $ref: ../components/responses/Problem-403.yaml
+    "404":
+      description: Not Found - Transaction does not exist
+      $ref: ../components/responses/Problem-404.yaml
+    "409":
+      description: Conflict - Transaction status is not APPROVED
+      $ref: ../components/responses/Problem-409.yaml
     "500":
       description: Internal Server Error
       $ref: ../components/responses/Problem-500.yaml

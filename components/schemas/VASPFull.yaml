@@ -1,4 +1,13 @@
 type: object
+description: |
+  Complete Virtual Asset Service Provider (VASP) information including configuration details.
+
+  This schema extends `VASP` with additional fields like email, webhook URL, and status.
+  Used when a VASP retrieves their own detailed information.
+
+  **Difference from `VASP`:**
+  - `VASP`: Basic public information (id, name, description, timestamps)
+  - `VASPFull`: Complete information including email, webhookUrl, and status (for own VASP only)
 properties:
   id:
     $ref: ./VASPId.yaml

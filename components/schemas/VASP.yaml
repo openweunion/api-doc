@@ -1,14 +1,23 @@
 type: object
+description: |
+  Virtual Asset Service Provider (VASP) basic information.
+
+  This schema contains public VASP information returned in list responses and cross-VASP queries.
+  For detailed VASP information including sensitive configuration, see `VASPFull`.
 properties:
   id:
+    description: "Unique identifier of this VASP."
     $ref: ./VASPId.yaml
   name:
-    description: "Name of the VASP."
+    description: "Display name of the VASP."
     type: string
+    minLength: 1
+    maxLength: 100
     example: VASP1
   description:
-    description: "Description of the VASP."
+    description: "A brief description of the services provided by this VASP."
     type: string
+    maxLength: 500
     example: VASP1 description
   createdTime:
     description: "The time when the VASP was created (ISO 8601 format)."

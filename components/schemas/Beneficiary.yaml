@@ -1,16 +1,25 @@
 type: object
+description: |
+  Information about the beneficiary (recipient) of the transaction, required for Travel Rule compliance.
+
+  The beneficiary is the party receiving the fiat currency after the offramp conversion.
 required:
   - beneficiaryPerson
   - accountNumber
 properties:
   beneficiaryPerson:
+    description: "Personal information of the beneficiary(ies). Multiple persons may be listed for joint accounts."
     type: array
+    minItems: 1
     items:
       $ref: ./Person.yaml
   accountNumber:
+    description: "Destination wallet or account identifier(s) for the beneficiary. For offramp, this typically references the receiving VASP's custody address."
     type: array
+    minItems: 1
     items:
       type: string
+      pattern: "^0x[a-fA-F0-9]{40}$"
       example: "0x742d35Cc6634C0532925a3b844Bc454e4438f44e"
 xml:
   name: Beneficiary

@@ -1,4 +1,8 @@
 type: object
+description: |
+  Bank account details for fiat currency withdrawal.
+
+  **Note:** Either `bankCode` or `swiftCode` must be provided. If both are provided, `swiftCode` takes precedence for international transfers.
 required:
   - accNo
   - ccy
@@ -6,28 +10,39 @@ required:
   - remitChannel
 properties:
   accNo:
-    description: "Account Number (for fiat only)"
+    description: "Bank account number for the withdrawal (IBAN or local account number)."
     type: string
+    minLength: 1
+    maxLength: 34
     example: "1234567890"
   bankCode:
-    description: "Bank Code (for fiat only; mandatory if swift code is not available)"
+    description: "Local bank code (e.g., clearing code). Required if `swiftCode` is not provided."
     type: string
+    minLength: 3
+    maxLength: 11
     example: "001"
   ccy:
-    description: "Currency (for fiat only)"
+    description: "ISO 4217 currency code for the withdrawal (e.g., HKD, USD, EUR)."
     type: string
+    pattern: "^[A-Z]{3}$"
     example: "HKD"
   qty:
-    description: "Quantity/Amount"
+    description: "Amount to withdraw in the specified currency."
     type: number
+    exclusiveMinimum: 0
     example: 100
   remitChannel:
-    description: "Remittance Channel (for fiat only; e.g., FPS, SWIFT and CHATS)"
+    description: "Payment channel for the withdrawal."
     type: string
+    enum:
+      - FPS
+      - SWIFT
+      - CHATS
     example: "FPS"
   swiftCode:
-    description: "SWIFT Code (for fiat only; mandatory if bank code is not available)"
+    description: "SWIFT/BIC code of the bank. Required if bank code is not provided."
     type: string
+    pattern: "^[A-Z]{6}[A-Z0-9]{2}([A-Z0-9]{3})?$"
     example: "HSBCHKHHXXX"
 xml:
   name: WithdrawalInfo

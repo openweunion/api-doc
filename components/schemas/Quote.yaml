@@ -1,12 +1,15 @@
 type: object
+description: "Represents a quote for converting digital assets to fiat currency with exchange rate and fees."
 properties:
   id:
+    description: "Unique identifier of this quote."
     $ref: ./QuoteId.yaml
   sourceId:
-    description: "The identifier for the source of the quote."
+    description: "The original identifier from the BFI (Bank/Fiat Interface) quote provider."
     type: string
     example: "ae0a740d-dca9-418b-9c86-dd15ded959c4"
   sourceVASPId:
+    description: "The VASP ID that provided this quote."
     type: string
     $ref: ./VASPId.yaml
   paymentCompany:
@@ -14,20 +17,25 @@ properties:
     type: string
     example: "EX.IO"
   fromAmount:
-    description: "The amount being sent from the sender's account."
+    description: "The amount of digital assets to be converted (in fromCurrency)."
     type: string
+    pattern: "^\\d+(\\.\\d{1,8})?$"
     example: "100.00"
   toAmount:
-    description: "The amount being received by the recipient's account."
+    description: "The amount of fiat currency to be received (in toCurrency), after fees."
     type: string
+    pattern: "^\\d+(\\.\\d{1,2})?$"
     example: "778.00"
   fromCurrency:
-    description: "The currency of the amount being sent."
+    description: "The source currency code (e.g., USDC for stablecoin)."
     type: string
+    minLength: 3
+    maxLength: 5
     example: "USDC"
   toCurrency:
-    description: "The currency of the amount being received."
+    description: "The target fiat currency code (ISO 4217 format)."
     type: string
+    pattern: "^[A-Z]{3}$"
     example: "HKD"
   chain:
     description: "The blockchain network for the transaction, formatted as 'eip155:<chainId>'."
@@ -38,8 +46,9 @@ properties:
       - eip155:137 # Polygon Mainnet
     example: eip155:1
   rate:
-    description: "The exchange rate applied to the transaction."
+    description: "The exchange rate applied (1 fromCurrency = rate toCurrency)."
     type: string
+    pattern: "^\\d+(\\.\\d{1,6})?$"
     example: "7.80"
   expiredTime:
     description: "The time when the quote expires (ISO 8601 format)."

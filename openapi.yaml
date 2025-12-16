@@ -4,6 +4,20 @@ info:
   title: WeUnion API
   description: |
     This API provides secure and programmable **offramp services**, allowing users to convert digital assets (e.g., USDC) into fiat currency and withdraw funds to their linked bank accounts.
+
+    ## Conventions
+
+    ### Timestamps
+    All timestamps in requests and responses use **ISO 8601 format in UTC timezone** (e.g., `2025-08-07T09:00:00Z`). The `Z` suffix is required to indicate UTC.
+
+    ### Pagination
+    List endpoints use 1-based page numbering. The `page` parameter starts from 1, and `pageSize` accepts values between 1 and 100 (default: 10).
+
+    ### Response Content Types
+    - **Success responses**: `application/json`
+    - **Error responses**: `application/problem+json` ([RFC 7807](https://tools.ietf.org/html/rfc7807))
+
+    Clients should handle both content types appropriately.
   license:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
@@ -11,6 +25,11 @@ servers:
   - url: http://weunion.eight-art.com/v1/offramp
 
 tags:
+  # Getting Started (Learning Path)
+  - name: Getting Started
+    description:
+      $ref: "docs/getting_started.md"
+
   - name: Overview
     description:
       $ref: "docs/overview.md"
@@ -19,10 +38,7 @@ tags:
     description:
       $ref: "docs/authentication.md"
 
-  - name: VASP Endpoints
-    description: |
-      Endpoints for managing Virtual Asset Service Providers (VASPs), including listing and retrieving VASP information.
-
+  # Core API Endpoints (Business Flow)
   - name: Quote Endpoints
     description: |
       Endpoints for managing quotes, including listing and retrieving quotes.
@@ -31,10 +47,33 @@ tags:
     description: |
       Endpoints for managing offramp transactions, including creation, approval, rejection, and status updates.
 
+  - name: VASP Endpoints
+    description: |
+      Endpoints for managing Virtual Asset Service Providers (VASPs), including listing and retrieving VASP information.
+
+  # Webhook (Async Notifications)
   - name: Webhook Endpoints
     description:
       $ref: "docs/webhook.md"
 
+  - name: Webhook Authentication
+    description:
+      $ref: "docs/webhook_auth.md"
+
+  # Reference Documentation
+  - name: Status Transitions
+    description:
+      $ref: "docs/status_transitions.md"
+
+  - name: Error Codes
+    description:
+      $ref: "docs/error_codes.md"
+
+  - name: Travel Rule
+    description:
+      $ref: "docs/travel_rule.md"
+
+  # BFI Implementation
   - name: BFI Quote Endpoints
     description:
       $ref: "docs/bfi_quote.md"

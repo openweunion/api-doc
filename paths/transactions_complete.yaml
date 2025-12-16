@@ -3,7 +3,20 @@ post:
     - Offramp Transaction Endpoints
   operationId: completeTransaction
   summary: Complete Transaction
-  description: Complete transaction by its ID and referenceId.
+  description: |
+    Complete a transaction by the Beneficiary VASP after the fiat withdrawal has been processed.
+
+    **Preconditions:**
+    - Transaction status must be: `TRANSFERRED`
+    - Only the Beneficiary VASP has permission to complete the transaction
+    - The on-chain transfer must have been confirmed
+
+    **Result:**
+    - Transaction status changes to `COMPLETED`
+    - The Originator VASP will receive a webhook notification
+    - The `referenceId` from the bank/payment provider is recorded for audit purposes
+
+    **Flow:** This is the final step in the offramp flow. The Beneficiary VASP calls this after successfully processing the fiat withdrawal to the user's bank account.
   parameters:
     - $ref: ../components/parameters/PayloadHeader.yaml
     - $ref: ../components/parameters/SignatureHeader.yaml
@@ -22,11 +35,11 @@ post:
               $ref: ../components/schemas/TransactionId.yaml
             referenceId:
               type: string
-              description: "Bank or payment provider reference ID for withdrawal."
+              description: "Bank or payment provider reference ID for the withdrawal. This serves as proof of fiat transfer completion."
               example: "BANK-TRX-20250827-001"
   responses:
     "200":
-      description: Success
+      description: Transaction completed successfully
       content:
         application/json:
           schema:
@@ -48,6 +61,15 @@ post:
     "401":
       description: Unauthorized
       $ref: ../components/responses/Problem-401.yaml
+    "403":
+      description: Forbidden - Only Beneficiary VASP can complete the transaction
+      $ref: ../components/responses/Problem-403.yaml
+    "404":
+      description: Not Found - Transaction does not exist
+      $ref: ../components/responses/Problem-404.yaml
+    "409":
+      description: Conflict - Transaction status is not TRANSFERRED
+      $ref: ../components/responses/Problem-409.yaml
     "500":
       description: Internal Server Error
       $ref: ../components/responses/Problem-500.yaml

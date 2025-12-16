@@ -1,0 +1,71 @@
+type: object
+description: |
+  Webhook notification payload sent to VASP endpoints when transaction status changes.
+
+  VASPs must configure their webhook URL via the `/vasps/webhook` endpoint to receive these notifications.
+required:
+  - message
+  - payload
+  - version
+properties:
+  message:
+    description: "Type of notification event."
+    type: string
+    enum:
+      - transactionUpdated
+    example: "transactionUpdated"
+  payload:
+    description: "Notification payload containing event details."
+    type: object
+    required:
+      - transaction
+    properties:
+      transaction:
+        description: "Transaction details for the status change event."
+        type: object
+        required:
+          - id
+          - status
+        properties:
+          id:
+            description: "Unique identifier of the transaction."
+            $ref: ./TransactionId.yaml
+          status:
+            description: "New status of the transaction."
+            type: string
+            enum:
+              - NEW
+              - APPROVED
+              - ACCEPTED
+              - REJECTED
+              - PENDING_TRANSFER
+              - TRANSFERRED
+              - COMPLETED
+              - CANCELLED
+            example: "APPROVED"
+          createdTime:
+            description: "Transaction creation time (ISO 8601 format in UTC)."
+            type: string
+            format: date-time
+            example: "2025-08-07T09:00:00Z"
+          updatedTime:
+            description: "Transaction last update time (ISO 8601 format in UTC)."
+            type: string
+            format: date-time
+            example: "2025-08-07T10:30:00Z"
+  version:
+    description: "Webhook payload structure version for backward compatibility."
+    type: string
+    pattern: "^\\d+\\.\\d+\\.\\d+$"
+    example: "1.0.0"
+example:
+  message: "transactionUpdated"
+  payload:
+    transaction:
+      id: "8cdd5b98-86d3-4921-8bb3-a2920f9bb350"
+      status: "APPROVED"
+      createdTime: "2025-08-07T09:00:00Z"
+      updatedTime: "2025-08-07T10:30:00Z"
+  version: "1.0.0"
+xml:
+  name: WebhookNotification

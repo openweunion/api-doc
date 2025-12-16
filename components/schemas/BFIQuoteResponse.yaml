@@ -1,0 +1,98 @@
+type: object
+description: |
+  Response from BFI (Bank/Fiat Interface) quote endpoint.
+
+  This response contains the real-time off-ramp quote from a BFI provider.
+  The `id` field from this response becomes the `sourceId` in the internal Quote schema.
+required:
+  - message
+  - code
+properties:
+  message:
+    description: "Response status message."
+    type: string
+    enum:
+      - success
+      - unsupported
+    example: "success"
+  code:
+    description: "Response status code. 0 for success, -1 for unsupported request."
+    type: integer
+    enum:
+      - 0
+      - -1
+    example: 0
+  data:
+    description: "Quote data (only present when code is 0)."
+    type: object
+    properties:
+      id:
+        description: "Unique identifier for the quote from the BFI. This becomes the `sourceId` in the internal Quote schema."
+        type: string
+        format: uuid
+        example: "ae0a740d-dca9-418b-9c86-dd15ded959c4"
+      fromAmount:
+        description: "The amount of digital assets being converted."
+        type: string
+        example: "100"
+      fromCurrency:
+        description: "Source currency code."
+        type: string
+        example: "USDC"
+      toCurrency:
+        description: "Target fiat currency code."
+        type: string
+        example: "HKD"
+      chain:
+        description: "Blockchain network identifier."
+        type: string
+        example: "eip155:1"
+      rate:
+        description: "Exchange rate applied (1 fromCurrency = rate toCurrency)."
+        type: string
+        example: "7.80"
+      expiredTime:
+        description: "Quote expiration timestamp (ISO 8601 format in UTC)."
+        type: string
+        format: date-time
+        example: "2025-08-08T15:04:05Z"
+      fee:
+        description: "Fee information from the BFI."
+        type: object
+        required:
+          - type
+          - currency
+          - amount
+        properties:
+          type:
+            description: "Fee currency type."
+            type: string
+            enum:
+              - fiat
+              - crypto
+            example: "fiat"
+          currency:
+            description: "Currency of the fee."
+            type: string
+            example: "HKD"
+          amount:
+            description: "Total fee amount (combined fees from BFI)."
+            type: string
+            example: "15.00"
+example:
+  message: "success"
+  code: 0
+  data:
+    id: "ae0a740d-dca9-418b-9c86-dd15ded959c4"
+    fromAmount: "100"
+    fromCurrency: "USDC"
+    toCurrency: "HKD"
+    chain: "eip155:1"
+    rate: "7.80"
+    expiredTime: "2025-08-08T15:04:05Z"
+    fee:
+      type: "fiat"
+      currency: "HKD"
+      amount: "15.00"
+xml:
+  name: BFIQuoteResponse

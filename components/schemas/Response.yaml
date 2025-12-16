@@ -1,12 +1,18 @@
 type: object
+description: "Standard API response wrapper."
+required:
+  - message
+  - code
 properties:
   message:
+    description: "Human-readable response message."
     type: string
     example: "success"
   code:
+    description: "Response status code. 0 indicates success, non-zero values indicate specific error conditions."
     type: integer
     example: 0
   data:
-    description: "The data returned in the response."
+    description: "The response payload. Structure varies by endpoint. May be null for error responses."
 xml:
   name: Response

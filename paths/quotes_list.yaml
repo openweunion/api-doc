@@ -20,16 +20,20 @@ post:
             - chain
           properties:
             fromCurrency:
-              description: "The currency of the amount being sold."
+              description: "The source currency code (e.g., USDC for stablecoin)."
               type: string
+              minLength: 3
+              maxLength: 5
               example: "USDC"
             toCurrency:
-              description: "The currency of the amount being bought."
+              description: "The target fiat currency code (ISO 4217 format)."
               type: string
+              pattern: "^[A-Z]{3}$"
               example: "HKD"
             fromAmount:
-              description: "The amount being sold in the fromCurrency."
+              description: "The amount of digital assets to convert."
               type: string
+              pattern: "^\\d+(\\.\\d{1,8})?$"
               example: "100.00"
             chain:
               description: "The blockchain network for the transaction, formatted as 'eip155:<chainId>'."

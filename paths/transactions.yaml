@@ -3,7 +3,24 @@ post:
     - Offramp Transaction Endpoints
   operationId: createTransaction
   summary: Create Transaction
-  description: Create a new transaction.
+  description: |
+    Create a new offramp transaction by the Originator VASP.
+
+    **Permissions:**
+    - Only the Originator VASP can create transactions
+
+    **Result:**
+    - A new transaction is created with status `NEW`
+    - The Originator VASP should then call the Approve endpoint to proceed
+
+    **Required Data:**
+    - `originatorVASPId`: Your VASP ID (the caller's VASP ID)
+    - `beneficiaryVASPId`: The VASP ID that will process the fiat withdrawal
+    - `quoteId`: A valid quote ID obtained from the List Quotes endpoint
+    - `withdrawalInfo`: Bank account details for the fiat withdrawal
+
+    **Optional Data:**
+    - `travelRuleData`: Required for compliance with travel rule regulations
   parameters:
     - $ref: ../components/parameters/PayloadHeader.yaml
     - $ref: ../components/parameters/SignatureHeader.yaml
@@ -21,27 +38,33 @@ post:
             - withdrawalInfo
           properties:
             originatorVASPId:
+              description: "The VASP ID of the transaction initiator (your VASP ID)."
               type: string
               $ref: ../components/schemas/VASPId.yaml
             beneficiaryVASPId:
+              description: "The VASP ID that will process the fiat withdrawal."
               type: string
               $ref: ../components/schemas/VASPId.yaml
             originatorCustomerId:
+              description: "The unique identifier of the customer initiating the transaction."
               type: string
               $ref: ../components/schemas/CustomerId.yaml
             quoteId:
+              description: "The quote ID obtained from the List Quotes endpoint. Must be a valid, non-expired quote."
               type: string
               $ref: ../components/schemas/QuoteId.yaml
             travelRuleData:
+              description: "Travel Rule compliance data. Required for transactions above certain thresholds."
               type: object
               $ref: ../components/schemas/TravelRuleData.yaml
             withdrawalInfo:
+              description: "Bank account details for the fiat withdrawal."
               type: object
               $ref: ../components/schemas/WithdrawalInfo.yaml
 
   responses:
     "200":
-      description: Success
+      description: Transaction created successfully
       content:
         application/json:
           schema:
@@ -53,11 +76,14 @@ post:
                     oneOf:
                       - $ref: ../components/schemas/Transaction.yaml
     "400":
-      description: Bad Request
+      description: Bad Request - Invalid parameters or expired quote
       $ref: ../components/responses/Problem-400.yaml
     "401":
       description: Unauthorized
       $ref: ../components/responses/Problem-401.yaml
+    "404":
+      description: Not Found - Quote or VASP does not exist
+      $ref: ../components/responses/Problem-404.yaml
     "500":
       description: Internal Server Error
       $ref: ../components/responses/Problem-500.yaml
@@ -67,7 +93,20 @@ put:
     - Offramp Transaction Endpoints
   operationId: updateTransaction
   summary: Update Transaction Hash
-  description: Update transaction hash by its ID.
+  description: |
+    Submit the on-chain transaction hash after completing the blockchain transfer.
+
+    **Preconditions:**
+    - Transaction status must be: `PENDING_TRANSFER`
+    - Only the Originator VASP can submit the transaction hash
+    - The on-chain transaction must have been broadcasted
+
+    **Result:**
+    - Transaction status changes to `TRANSFERRED`
+    - The Beneficiary VASP will receive a webhook notification
+    - The Beneficiary VASP can then verify the on-chain transaction and complete the fiat withdrawal
+
+    **Flow:** This is called after the Originator VASP has executed the actual blockchain transfer following the `POST /transactions/transfer` call.
   parameters:
     - $ref: ../components/parameters/PayloadHeader.yaml
     - $ref: ../components/parameters/SignatureHeader.yaml
@@ -82,15 +121,16 @@ put:
             - transactionHash
           properties:
             id:
+              description: "The transaction ID to update."
               type: string
               $ref: ../components/schemas/TransactionId.yaml
             transactionHash:
               type: string
-              description: "The hash of the transaction."
+              description: "The on-chain transaction hash from the blockchain transfer. Must be a valid transaction hash for the specified chain."
               example: "0x1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef"
   responses:
     "200":
-      description: Success
+      description: Transaction hash updated successfully
       content:
         application/json:
           schema:
@@ -106,11 +146,20 @@ put:
                               status: "TRANSFERRED"
                               transactionHash: "0x1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef"
     "400":
-      description: Bad Request
+      description: Bad Request - Invalid transaction hash format
       $ref: ../components/responses/Problem-400.yaml
     "401":
       description: Unauthorized
       $ref: ../components/responses/Problem-401.yaml
+    "403":
+      description: Forbidden - Only Originator VASP can update the transaction hash
+      $ref: ../components/responses/Problem-403.yaml
+    "404":
+      description: Not Found - Transaction does not exist
+      $ref: ../components/responses/Problem-404.yaml
+    "409":
+      description: Conflict - Transaction status is not PENDING_TRANSFER
+      $ref: ../components/responses/Problem-409.yaml
     "500":
       description: Internal Server Error
       $ref: ../components/responses/Problem-500.yaml

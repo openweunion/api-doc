@@ -2,8 +2,20 @@ post:
   tags:
     - Offramp Transaction Endpoints
   operationId: transferTransaction
-  summary: Transfer Transaction
-  description: Transfer transaction by its ID.
+  summary: Initiate Transfer
+  description: |
+    Initiate an on-chain transfer for a transaction by the Originator VASP.
+
+    **Preconditions:**
+    - Transaction status must be: `ACCEPTED`
+    - Only the Originator VASP has permission to initiate the transfer
+
+    **Result:**
+    - Transaction status changes to `PENDING_TRANSFER`
+    - The Originator VASP should then execute the actual on-chain transfer
+    - After the on-chain transfer is complete, call `PUT /transactions` to submit the transaction hash
+
+    **Flow:** This endpoint signals the intent to transfer. The actual blockchain transaction should be executed separately, and the resulting transaction hash should be submitted via the Update Transaction Hash endpoint.
   parameters:
     - $ref: ../components/parameters/PayloadHeader.yaml
     - $ref: ../components/parameters/SignatureHeader.yaml
@@ -21,7 +33,7 @@ post:
               $ref: ../components/schemas/TransactionId.yaml
   responses:
     "200":
-      description: Success
+      description: Transfer initiated successfully
       content:
         application/json:
           schema:
@@ -41,6 +53,15 @@ post:
     "401":
       description: Unauthorized
       $ref: ../components/responses/Problem-401.yaml
+    "403":
+      description: Forbidden - Only Originator VASP can initiate the transfer
+      $ref: ../components/responses/Problem-403.yaml
+    "404":
+      description: Not Found - Transaction does not exist
+      $ref: ../components/responses/Problem-404.yaml
+    "409":
+      description: Conflict - Transaction status is not ACCEPTED
+      $ref: ../components/responses/Problem-409.yaml
     "500":
       description: Internal Server Error
       $ref: ../components/responses/Problem-500.yaml

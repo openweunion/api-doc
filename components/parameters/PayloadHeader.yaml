@@ -3,4 +3,23 @@ in: header
 required: true
 schema:
   type: string
-description: Base64-encoded JSON string containing request data and timestamp.
+description: |
+  Base64-encoded JSON string containing the request body and timestamp.
+
+  **Format:**
+  ```json
+  {
+    "data": <original_request_body>,
+    "timestamp": <unix_timestamp_ms>
+  }
+  ```
+
+  **Construction Steps:**
+  1. Create a JSON object with `data` (request body) and `timestamp` (current Unix timestamp in milliseconds)
+  2. Convert the JSON object to a string
+  3. Base64 encode the string
+
+  **Notes:**
+  - Timestamp must be within 5 minutes of server time to prevent replay attacks
+  - For requests without a body (e.g., GET), use an empty object `{}` for the data field
+example: "eyJkYXRhIjp7InBhZ2UiOjEsInBhZ2VTaXplIjoxMH0sInRpbWVzdGFtcCI6MTcyMzAxMjgwMDAwMH0="

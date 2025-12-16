@@ -3,4 +3,20 @@ in: header
 required: true
 schema:
   type: string
-description: Signature generated from the payload.
+description: |
+  HMAC-SHA512 signature of the payload for request authentication.
+
+  **Construction Steps:**
+  1. Take the Base64-encoded payload string (same value as the `payload` header)
+  2. Generate HMAC-SHA512 signature using your API secret key
+  3. Hex-encode the signature (lowercase)
+
+  **Example (pseudocode):**
+  ```
+  signature = hex(hmac_sha512(secret_key, payload_base64_string))
+  ```
+
+  **Notes:**
+  - The signature ensures request integrity and authenticity
+  - Keep your API secret key secure and never expose it in client-side code
+example: "a1b2c3d4e5f6..."

@@ -1,0 +1,42 @@
+type: object
+description: |
+  Request body for BFI (Bank/Fiat Interface) quote endpoint.
+
+  WeUnion sends this request to registered BFI endpoints to obtain real-time off-ramp quotes.
+required:
+  - fromAmount
+  - fromCurrency
+  - toCurrency
+  - chain
+properties:
+  fromAmount:
+    description: "The amount of digital assets to convert."
+    type: string
+    pattern: "^\\d+(\\.\\d{1,8})?$"
+    example: "100"
+  fromCurrency:
+    description: "Source currency code (e.g., USDC for stablecoin)."
+    type: string
+    minLength: 3
+    maxLength: 5
+    example: "USDC"
+  toCurrency:
+    description: "Target fiat currency code (ISO 4217 format)."
+    type: string
+    pattern: "^[A-Z]{3}$"
+    example: "HKD"
+  chain:
+    description: "Blockchain network identifier in CAIP-2 format."
+    type: string
+    enum:
+      - eip155:1
+      - eip155:56
+      - eip155:137
+    example: "eip155:1"
+example:
+  fromAmount: "100"
+  fromCurrency: "USDC"
+  toCurrency: "HKD"
+  chain: "eip155:1"
+xml:
+  name: BFIQuoteRequest
