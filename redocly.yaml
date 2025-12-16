@@ -4,3 +4,32 @@ apis:
 
 extends:
   - recommended
+
+rules:
+  # Require important metadata
+  info-contact: off
+  info-license: warn
+
+  # Operation requirements
+  operation-operationId: error
+  operation-summary: error
+  operation-description: warn
+  operation-4xx-response: warn
+
+  # Schema requirements
+  no-invalid-schema-examples: error
+  no-invalid-media-type-examples: warn
+
+  # Path requirements
+  path-not-include-query: error
+
+  # Security
+  security-defined: error
+
+theme:
+  openapi:
+    generateCodeSamples:
+      languages:
+        - lang: curl
+        - lang: JavaScript
+        - lang: Python
