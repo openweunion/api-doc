@@ -1,13 +1,27 @@
 # Redocly build output
 .redocly/
+*.html
+dist/
 
 # Redocly lint ignore file
 .redocly.lint-ignore.yaml
 
 # Node.js dependencies
 node_modules/
+package-lock.json
 
 # Editor and OS specific files
 .DS_Store
 .vscode/
+.idea/
 *.log
+*.swp
+*.swo
+*~
+
+# Claude Code
+.claude/
+
+# Temporary files
+*.tmp
+*.bak
